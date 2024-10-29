@@ -33,9 +33,10 @@ class MotorBoat extends Boat{
   val fuelType: String = "oil"
 }
 
-class WarShip extends MotorBoat{
-  val country: String = "UK"
-}
+//class WarShip extends MotorBoat{
+//  val country: String = "UK"
+//}
+class Warship (val country: String) extends MotorBoat
 
 class PacerBoat extends MotorBoat{
   val sponsor: String = "Michelin"
