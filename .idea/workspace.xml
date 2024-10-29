@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040fd19c-99f3-4bd6-96fc-5ce40db4fa0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/slide17.sc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/slide18mathsqn.sc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes-examples.sc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Mathematician.sc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Mathematician.sc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/slide18mathsqn.sc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,9 @@
   "associatedIndex": 7
 }]]></component>
   <component name="ProjectId" id="2o6gD4ceDCkYXyKiW03465j5J2e" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
