@@ -13,6 +13,11 @@ val animal = testMap(10) // "dog"
 //val failedAnimal = testMap(13) // java.util.NoSuchElementException: key not found: 13
 val animalOpt = testMap.get(13) // Option[String] = None
 
+val testMap2: Map[Int, Any] = Map(10 -> "dog", 11 -> true, 12 -> 78)
+testMap2(10)
+testMap2.get(12)
+testMap2.get(15)
+
 // map: iterate through every item in a collection and perform a function on it
 val testSeq = Seq(1, 2, 3)
 val doubledSeq = testSeq.map {

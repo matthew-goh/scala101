@@ -198,16 +198,16 @@ def poseQuestion(selectedChar: GameCharacter, guessAttribute: String, guessValue
     }
     guessBeard(selectedChar, convertGuessValueToBool(guessValue), remainingChars)
   }
-  else if (guessAttribute == "rosy cheeks"){
+  else if (guessAttribute == "rosyCheeks"){
     if (guessValue != "true" && guessValue != "false"){
       throw new Exception("Guess value must be true or false")
     }
     guessRosyCheeks(selectedChar, convertGuessValueToBool(guessValue), remainingChars)
   }
-  else if (guessAttribute == "hair colour"){
+  else if (guessAttribute == "hairColour"){
     guessHairColour(selectedChar, guessValue, remainingChars)
   }
-  else if (guessAttribute == "eye colour"){
+  else if (guessAttribute == "eyeColour"){
     guessEyeColour(selectedChar, guessValue, remainingChars)
   }
   else if (guessAttribute == "hat"){
@@ -216,14 +216,14 @@ def poseQuestion(selectedChar: GameCharacter, guessAttribute: String, guessValue
     }
     guessHat(selectedChar, convertGuessValueToBool(guessValue), remainingChars)
   }
-  else if (guessAttribute == "hat colour"){
+  else if (guessAttribute == "hatColour"){
     guessHatColour(selectedChar, guessValue, remainingChars)
   }
   else {
     throw new Exception("Invalid guess attribute")
   }
 }
-//printRemainingNames(poseQuestion(Anne, "hair colour", "orange", allCharacters))
+//printRemainingNames(poseQuestion(Anne, "hairColour", "orange", allCharacters))
 
 
 // Guess a character to end the game
@@ -255,5 +255,5 @@ charactersOnBoard = poseQuestion(selectedChar, "gender", "Male", charactersOnBoa
 printRemainingNames(charactersOnBoard)
 charactersOnBoard = poseQuestion(selectedChar, "hat", "true", charactersOnBoard)
 printRemainingNames(charactersOnBoard)
-charactersOnBoard = poseQuestion(selectedChar, "hair colour", "black", charactersOnBoard)
+charactersOnBoard = poseQuestion(selectedChar, "hairColour", "black", charactersOnBoard)
 printRemainingNames(charactersOnBoard)
