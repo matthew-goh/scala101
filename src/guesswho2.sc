@@ -75,6 +75,11 @@ def poseQuestion(selectedChar: GameCharacter, guessAttribute: String, guessValue
     throw new Exception("Invalid guess attribute")
   }
 
+//  if (guessAttribute == "gender"){
+//    if (guessValue.toString.toLowerCase != "male" && guessValue.toString.toLowerCase != "female"){
+//      throw new Exception("Guess value must be Male or Female")
+//    }
+//  }
   if (guessAttribute == "gender"){
     if (guessValue != "Male" && guessValue != "Female"){
       throw new Exception("Guess value must be Male or Female")
@@ -96,7 +101,7 @@ def poseQuestion(selectedChar: GameCharacter, guessAttribute: String, guessValue
     }
   }
 }
-printRemainingNames(poseQuestion(Anne, "hairColour", "orange", allCharacters))
+// printRemainingNames(poseQuestion(Anne, "hairColour", "orange", allCharacters))
 
 
 // Guess a character to end the game
