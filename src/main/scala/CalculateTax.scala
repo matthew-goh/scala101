@@ -5,7 +5,7 @@ class CalculateTax {
     if (m < 0) {
       0
     } else if (m <= 10000){
-      round(m * 0.1).toInt
+      round(m * 0.1).toInt // round() outputs a Long type, convert to Int
     } else if (m <= 50000){
       round(m * 0.15).toInt
     } else if (m <= 100000){
