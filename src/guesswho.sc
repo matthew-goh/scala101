@@ -59,7 +59,7 @@ def printRemainingNames(characterSeq: Seq[GameCharacter]) : Unit = {
 
 // Randomly select character to be guessed
 def selectCharacter(characterSeq: Seq[GameCharacter]) : GameCharacter =
-  characterSeq(Random.between(0, allCharacters.length))
+  characterSeq(Random.between(0, characterSeq.length))
 //val selectedChar = selectCharacter(allCharacters)
 //println(selectedChar.name)
 

@@ -14,7 +14,7 @@ val Alfred = new GameCharacter(name = "Alfred", attributes = Map("gender" -> "Ma
 val Anita = new GameCharacter(name = "Anita", attributes = Map("gender" -> "Female", "glasses" -> false, "moustache" -> false, "beard" -> false,
   "rosyCheeks" -> true, "hairColour" -> "white", "eyeColour" -> "blue", "hat" -> false, "hatColour" -> "none"))
 
-val Anne = new GameCharacter(name = "Anne", attributes = Map("gender" -> "Male", "glasses" -> false, "moustache" -> false, "beard" -> false,
+val Anne = new GameCharacter(name = "Anne", attributes = Map("gender" -> "Female", "glasses" -> false, "moustache" -> false, "beard" -> false,
   "rosyCheeks" -> false, "hairColour" -> "black", "eyeColour" -> "brown", "hat" -> false, "hatColour" -> "none"))
 
 val Bernard = new GameCharacter(name = "Bernard", attributes = Map("gender" -> "Male", "glasses" -> false, "moustache" -> false, "beard" -> false,
@@ -58,7 +58,7 @@ def printRemainingNames(characterSeq: Seq[GameCharacter]) : Unit = {
 
 // Randomly select character to be guessed
 def selectCharacter(characterSeq: Seq[GameCharacter]) : GameCharacter =
-  characterSeq(Random.between(0, allCharacters.length))
+  characterSeq(Random.between(0, characterSeq.length))
 //val selectedChar = selectCharacter(allCharacters)
 //println(selectedChar.name)
 
@@ -101,32 +101,47 @@ printRemainingNames(poseQuestion(Anne, "hairColour", "orange", allCharacters))
 
 // Guess a character to end the game
 var gameOver = false
-def guessCharacter(selectedChar: GameCharacter, guessedChar: String) : Unit = {
+def guessCharacter(selectedChar: GameCharacter, guessedChar: String, guesser: Int) : Unit = {
   if(!allNames.contains(guessedChar)){
     throw new Exception("Invalid name")
   }
 
   gameOver = true
   if (selectedChar.name == guessedChar){
-    println("You win")
+    println("Player " + guesser + " wins")
   }
   else {
-    print("You lose")
+    print("Player " + guesser + " loses")
   }
 }
-//guessCharacter(Bill, "Bill")
-//guessCharacter(Bill, "Alfred")
-//guessCharacter(Bill, "Alice")
+//guessCharacter(Bill, "Bill", 1)
+//guessCharacter(Bill, "Alfred", 2)
+//guessCharacter(Bill, "Alice", 1)
 
 ///////////////////////
 // Playing the game: start with all characters on board, randomly select target character
-var charactersOnBoard = resetBoard()
+var charsOnBoardP1 = resetBoard()
+var charsOnBoardP2 = resetBoard()
 
-val selectedChar = selectCharacter(allCharacters)
-println("Selected character: " + selectedChar.name)
-charactersOnBoard = poseQuestion(selectedChar, "gender", "Male", charactersOnBoard)
-printRemainingNames(charactersOnBoard)
-charactersOnBoard = poseQuestion(selectedChar, "hat", true, charactersOnBoard)
-printRemainingNames(charactersOnBoard)
-charactersOnBoard = poseQuestion(selectedChar, "hairColour", "black", charactersOnBoard)
-printRemainingNames(charactersOnBoard)
+val selectedCharP1 = selectCharacter(allCharacters) // P1 must guess this
+val selectedCharP2 = selectCharacter(allCharacters) // P2 must guess this
+println("Selected characters: P1 " + selectedCharP1.name + ", P2 " + selectedCharP2.name)
+
+charsOnBoardP1 = poseQuestion(selectedCharP1, "gender", "Male", charsOnBoardP1)
+printRemainingNames(charsOnBoardP1)
+charsOnBoardP2 = poseQuestion(selectedCharP2, "gender", "Female", charsOnBoardP2)
+printRemainingNames(charsOnBoardP2)
+
+charsOnBoardP1 = poseQuestion(selectedCharP1, "hat", true, charsOnBoardP1)
+printRemainingNames(charsOnBoardP1)
+charsOnBoardP2 = poseQuestion(selectedCharP2, "moustache", true, charsOnBoardP2)
+printRemainingNames(charsOnBoardP2)
+
+charsOnBoardP1 = poseQuestion(selectedCharP1, "hairColour", "black", charsOnBoardP1)
+printRemainingNames(charsOnBoardP1)
+charsOnBoardP2 = poseQuestion(selectedCharP2, "rosyCheeks", true, charsOnBoardP2)
+printRemainingNames(charsOnBoardP2)
+
+// P1 guesses randomly from the remaining names
+val nameToGuess = selectCharacter(charsOnBoardP1).name
+guessCharacter(selectedCharP1, nameToGuess, 1)
