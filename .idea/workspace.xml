@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040fd19c-99f3-4bd6-96fc-5ce40db4fa0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/CalculateTax.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/FizzBuzz.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/CalculateTaxSpec.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/FizzBuzzSpec.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/CalculateTaxSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/CalculateTaxSpec.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input.executor": "Run",
+    "ScalaTest.CalculateTaxSpec.executor": "Run",
     "ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0.executor": "Run",
     "ScalaTest.CubeCalculatorTest.CubeCalculator.cube 3 should be 27.executor": "Run",
     "ScalaTest.CubeCalculatorTest.executor": "Run",
@@ -88,7 +85,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input">
+  <component name="RunManager" selected="ScalaTest.CalculateTaxSpec">
     <configuration name="Run the program" type="SbtRunConfiguration" factoryName="sbt Task" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
@@ -99,6 +96,32 @@
       <option name="useSbtShell" value="true" />
       <option name="vmparams" value="-Xms512M -Xmx1024M -Xss1M" />
       <option name="workingDir" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculateTaxSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="scala101" />
+      <option name="VMParameters" value="" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="alternativeJrePath" />
+      <option name="alternativeJrePathEnabled" value="false" />
+      <option name="classpathModifications">
+        <list />
+      </option>
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <option name="testClassPath" value="CalculateTaxSpec" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -183,33 +206,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CubeCalculatorTest.CubeCalculator.cube 3 should be 27" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="scala101" />
-      <option name="VMParameters" value="" />
-      <option name="allowRunningInParallel" value="false" />
-      <option name="alternativeJrePath" />
-      <option name="alternativeJrePathEnabled" value="false" />
-      <option name="classpathModifications">
-        <list />
-      </option>
-      <option name="envs">
-        <map />
-      </option>
-      <option name="passParentEnvs" value="true" />
-      <option name="programParameters" value="" />
-      <option name="projectPathOnTarget" />
-      <option name="selectedOptions">
-        <list />
-      </option>
-      <option name="testKind" value="Test name" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="CubeCalculatorTest" />
-      <option name="testName" value="CubeCalculator.cube 3 should be 27" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FizzBuzzSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala101" />
       <option name="VMParameters" value="" />
@@ -238,19 +234,19 @@
     </configuration>
     <list>
       <item itemvalue="sbt Task.Run the program" />
+      <item itemvalue="ScalaTest.CalculateTaxSpec" />
       <item itemvalue="ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input" />
       <item itemvalue="ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0" />
-      <item itemvalue="ScalaTest.CubeCalculatorTest.CubeCalculator.cube 3 should be 27" />
       <item itemvalue="ScalaTest.FizzBuzzSpec" />
       <item itemvalue="ScalaTest.CubeCalculatorTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="ScalaTest.CalculateTaxSpec" />
         <item itemvalue="ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input" />
         <item itemvalue="ScalaTest.FizzBuzzSpec" />
         <item itemvalue="ScalaTest.CubeCalculatorTest" />
         <item itemvalue="ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0" />
-        <item itemvalue="ScalaTest.CubeCalculatorTest.CubeCalculator.cube 3 should be 27" />
       </list>
     </recent_temporary>
   </component>
