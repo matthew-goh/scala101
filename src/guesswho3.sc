@@ -4,12 +4,12 @@ import scala.util.Random
 case class GameCharacter(val name: String, val attributes: Map[String, Any])
 val allAttributes = Seq("gender", "glasses", "moustache", "beard", "rosyCheeks", "hairColour", "eyeColour", "hat", "hatColour")
 
-trait Gender
+sealed trait Gender
 case object Male extends Gender
 case object Female extends Gender
 //Male.toString
 
-trait Colour
+sealed trait Colour
 case object Black extends Colour
 case object Brown extends Colour
 case object Blue extends Colour
