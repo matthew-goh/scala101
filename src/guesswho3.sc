@@ -5,20 +5,19 @@ case class GameCharacter(val name: String, val attributes: Map[String, Any])
 val allAttributes = Seq("gender", "glasses", "moustache", "beard", "rosyCheeks", "hairColour", "eyeColour", "hat", "hatColour")
 
 trait Gender
-object Male extends Gender
-object Female extends Gender
+case object Male extends Gender
+case object Female extends Gender
 //Male.toString
 
 trait Colour
-object Black extends Colour
-object Brown extends Colour
-object Blue extends Colour
-object Orange extends Colour
-object White extends Colour
-object Blonde extends Colour
-object Pink extends Colour
-object Grey extends Colour
-object None extends Colour
+case object Black extends Colour
+case object Brown extends Colour
+case object Blue extends Colour
+case object Orange extends Colour
+case object White extends Colour
+case object Blonde extends Colour
+case object Pink extends Colour
+case object Grey extends Colour
 
 // instantiate the specific characters
 val Alex = GameCharacter(name = "Alex", attributes = Map("gender" -> Male, "glasses" -> false, "moustache" -> true, "beard" -> false,
@@ -34,7 +33,7 @@ val Anne = GameCharacter(name = "Anne", attributes = Map("gender" -> Female, "gl
   "rosyCheeks" -> false, "hairColour" -> Black, "eyeColour" -> Brown, "hat" -> false, "hatColour" -> None))
 
 val Bernard = GameCharacter(name = "Bernard", attributes = Map("gender" -> Male, "glasses" -> false, "moustache" -> false, "beard" -> false,
-  "rosyCheeks" -> false, "hairColour" -> Brown, "eyeColour" -> Brown, "hat" -> true, "hatColour" -> Orange))
+  "rosyCheeks" -> false, "hairColour" -> Brown, "eyeColour" -> Brown, "hat" -> true, "hatColour" -> Some(Orange)))
 
 val Bill = GameCharacter(name = "Bill", attributes = Map("gender" -> Male, "glasses" -> false, "moustache" -> false, "beard" -> true,
   "rosyCheeks" -> false, "hairColour" -> Orange, "eyeColour" -> Brown, "hat" -> false, "hatColour" -> None))
@@ -43,13 +42,13 @@ val Charles = GameCharacter(name = "Charles", attributes = Map("gender" -> Male,
   "rosyCheeks" -> false, "hairColour" -> Blonde, "eyeColour" -> Brown, "hat" -> false, "hatColour" -> None))
 
 val Claire = GameCharacter(name = "Claire", attributes = Map("gender" -> Female, "glasses" -> true, "moustache" -> false, "beard" -> false,
-  "rosyCheeks" -> false, "hairColour" -> Orange, "eyeColour" -> Brown, "hat" -> true, "hatColour" -> Pink))
+  "rosyCheeks" -> false, "hairColour" -> Orange, "eyeColour" -> Brown, "hat" -> true, "hatColour" -> Some(Pink)))
 
 val David = GameCharacter(name = "David", attributes = Map("gender" -> Male, "glasses" -> false, "moustache" -> false, "beard" -> true,
   "rosyCheeks" -> false, "hairColour" -> Blonde, "eyeColour" -> Brown, "hat" -> false, "hatColour" -> None))
 
 val Eric = GameCharacter(name = "Eric", attributes = Map("gender" -> Male, "glasses" -> false, "moustache" -> false, "beard" -> false,
-  "rosyCheeks" -> false, "hairColour" -> Blonde, "eyeColour" -> Brown, "hat" -> true, "hatColour" -> Grey))
+  "rosyCheeks" -> false, "hairColour" -> Blonde, "eyeColour" -> Brown, "hat" -> true, "hatColour" -> Some(Grey)))
 
 val allCharacters: Seq[GameCharacter] = Seq(Alex, Alfred, Anita, Anne, Bernard, Bill, Charles, Claire, David, Eric)
 def resetBoard() : Seq[GameCharacter] = allCharacters // returns list of all characters
@@ -96,9 +95,13 @@ def poseQuestion(selectedChar: GameCharacter, guessAttribute: String, guessValue
       if (!guessValue.isInstanceOf[Boolean]) {
         throw new Exception("Guess value must be a Boolean")
       }
-    case "hairColour" | "eyeColour" | "hatColour" =>
+    case "hairColour" | "eyeColour" =>
       if (!guessValue.isInstanceOf[Colour]) {
         throw new Exception("Guess value must be an object extending the Colour trait")
+      }
+    case "hatColour" =>
+      if (!guessValue.isInstanceOf[Option[Colour]]) {
+        throw new Exception("Guess value type must be Option[Colour]")
       }
     case _ =>
       throw new Exception("Invalid guess attribute")
@@ -107,13 +110,13 @@ def poseQuestion(selectedChar: GameCharacter, guessAttribute: String, guessValue
   val guessValueStr = guessValue.toString
 
 //  selectedChar.attributes(guessAttribute).toString match {
-//    case guessValueLower =>
+//    case guessValueStr =>
 //      remainingChars.filter {
-//        ch => ch.attributes(guessAttribute).toString == guessValueLower
+//        ch => ch.attributes(guessAttribute).toString == guessValueStr
 //      }
 //    case _ =>
 //      remainingChars.filter {
-//        ch => ch.attributes(guessAttribute).toString != guessValueLower
+//        ch => ch.attributes(guessAttribute).toString != guessValueStr
 //      }
 //  }
 
@@ -129,6 +132,7 @@ def poseQuestion(selectedChar: GameCharacter, guessAttribute: String, guessValue
 }
 printRemainingNames(poseQuestion(Alex, "hairColour", Orange, allCharacters))
 printRemainingNames(poseQuestion(Anne, "gender", Male, allCharacters))
+printRemainingNames(poseQuestion(Eric, "hatColour", Some(Grey), allCharacters))
 
 // Guess a character to end the game
 var gameOver = false
