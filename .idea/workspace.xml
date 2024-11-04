@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040fd19c-99f3-4bd6-96fc-5ce40db4fa0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/Colour.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/GameCharacter.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/Gender.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/GuessWho.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/GuessWhoSpec.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/GuessWhoExample.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/guesswho3.sc" beforeDir="false" afterPath="$PROJECT_DIR$/src/guesswho3.sc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/example/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/example/Main.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +62,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.GuessWhoExample.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.hello.executor": "Run",
     "Application.run.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -84,6 +81,7 @@
     "ScalaTest.GuessWhoSpec.guessWho should filter the list of characters when a question is posed.executor": "Run",
     "ScalaTest.GuessWhoSpec.guessWho should print the list of character names correctly.executor": "Run",
     "ScalaTest.GuessWhoSpec.guessWho should reset the game board with all characters.executor": "Run",
+    "ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid.executor": "Run",
     "ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid.executor": "Run",
     "ScalaTest.TwoNumbersSpec.add should add numbers.executor": "Run",
     "ScalaTest.TwoNumbersSpec.executor": "Run",
@@ -105,7 +103,14 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="ScalaTest.GuessWhoSpec">
+  <component name="RunManager" selected="Application.GuessWhoExample">
+    <configuration name="GuessWhoExample" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="GuessWhoExample" />
+      <module name="scala101" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Run the program" type="SbtRunConfiguration" factoryName="sbt Task" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
@@ -173,33 +178,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="scala101" />
-      <option name="VMParameters" value="" />
-      <option name="allowRunningInParallel" value="false" />
-      <option name="alternativeJrePath" />
-      <option name="alternativeJrePathEnabled" value="false" />
-      <option name="classpathModifications">
-        <list />
-      </option>
-      <option name="envs">
-        <map />
-      </option>
-      <option name="passParentEnvs" value="true" />
-      <option name="programParameters" value="" />
-      <option name="projectPathOnTarget" />
-      <option name="selectedOptions">
-        <list />
-      </option>
-      <option name="testKind" value="Test name" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="GuessWhoSpec" />
-      <option name="testName" value="guessWho should filter the list of characters and print the correct result when a character is guessed" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala101" />
       <option name="VMParameters" value="" />
@@ -255,20 +233,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.GuessWhoExample" />
       <item itemvalue="sbt Task.Run the program" />
       <item itemvalue="ScalaTest.GuessWhoSpec.guessCharacter should throw an exception if an invalid name is input" />
-      <item itemvalue="ScalaTest.GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed" />
       <item itemvalue="ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid" />
       <item itemvalue="ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid" />
       <item itemvalue="ScalaTest.GuessWhoSpec" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GuessWhoExample" />
         <item itemvalue="ScalaTest.GuessWhoSpec" />
         <item itemvalue="ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid" />
         <item itemvalue="ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid" />
         <item itemvalue="ScalaTest.GuessWhoSpec.guessCharacter should throw an exception if an invalid name is input" />
-        <item itemvalue="ScalaTest.GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed" />
       </list>
     </recent_temporary>
   </component>
@@ -292,7 +270,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730195316600</updated>
-      <workItem from="1730716315319" duration="5423000" />
+      <workItem from="1730716315319" duration="7577000" />
     </task>
     <servers />
   </component>
