@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040fd19c-99f3-4bd6-96fc-5ce40db4fa0f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Colour.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/GameCharacter.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Gender.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/GuessWho.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/GuessWhoSpec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/guesswho3.sc" beforeDir="false" afterPath="$PROJECT_DIR$/src/guesswho3.sc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/methods-functions.sc" beforeDir="false" afterPath="$PROJECT_DIR$/src/methods-functions.sc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,33 +65,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.hello.executor&quot;: &quot;Run&quot;,
-    &quot;Application.run.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input.executor&quot;: &quot;Run&quot;,
-    &quot;ScalaTest.CalculateTaxSpec.executor&quot;: &quot;Run&quot;,
-    &quot;ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0.executor&quot;: &quot;Run&quot;,
-    &quot;ScalaTest.CubeCalculatorTest.CubeCalculator.cube 3 should be 27.executor&quot;: &quot;Run&quot;,
-    &quot;ScalaTest.CubeCalculatorTest.executor&quot;: &quot;Run&quot;,
-    &quot;ScalaTest.FizzBuzzSpec.executor&quot;: &quot;Run&quot;,
-    &quot;ScalaTest.TwoNumbersSpec.add should add numbers.executor&quot;: &quot;Run&quot;,
-    &quot;ScalaTest.TwoNumbersSpec.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.hello.executor": "Run",
+    "Application.run.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input.executor": "Run",
+    "ScalaTest.CalculateTaxSpec.executor": "Run",
+    "ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0.executor": "Run",
+    "ScalaTest.CubeCalculatorTest.CubeCalculator.cube 3 should be 27.executor": "Run",
+    "ScalaTest.CubeCalculatorTest.executor": "Run",
+    "ScalaTest.FizzBuzzSpec.executor": "Run",
+    "ScalaTest.GuessWhoSpec.executor": "Run",
+    "ScalaTest.GuessWhoSpec.guessCharacter should throw an exception if an invalid name is input.executor": "Run",
+    "ScalaTest.GuessWhoSpec.guessWho should create a list of all character names.executor": "Run",
+    "ScalaTest.GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed.executor": "Run",
+    "ScalaTest.GuessWhoSpec.guessWho should filter the list of characters when a question is posed.executor": "Run",
+    "ScalaTest.GuessWhoSpec.guessWho should print the list of character names correctly.executor": "Run",
+    "ScalaTest.GuessWhoSpec.guessWho should reset the game board with all characters.executor": "Run",
+    "ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid.executor": "Run",
+    "ScalaTest.TwoNumbersSpec.add should add numbers.executor": "Run",
+    "ScalaTest.TwoNumbersSpec.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="ScalaTest.CalculateTaxSpec">
+  <component name="RunManager" selected="ScalaTest.GuessWhoSpec">
     <configuration name="Run the program" type="SbtRunConfiguration" factoryName="sbt Task" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
@@ -101,7 +120,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculateTaxSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="GuessWhoSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala101" />
       <option name="VMParameters" value="" />
       <option name="allowRunningInParallel" value="false" />
@@ -121,13 +140,13 @@
       </option>
       <option name="testKind" value="Class" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="CalculateTaxSpec" />
+      <option name="testClassPath" value="GuessWhoSpec" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculateTaxSpec.calculateTax should calculate the correct percentage of the input" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="GuessWhoSpec.guessCharacter should throw an exception if an invalid name is input" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala101" />
       <option name="VMParameters" value="" />
       <option name="allowRunningInParallel" value="false" />
@@ -147,40 +166,14 @@
       </option>
       <option name="testKind" value="Test name" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="CalculateTaxSpec" />
-      <option name="testName" value="calculateTax should calculate the correct percentage of the input" />
+      <option name="testClassPath" value="GuessWhoSpec" />
+      <option name="testName" value="guessCharacter should throw an exception if an invalid name is input" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CubeCalculatorTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="scala101" />
-      <option name="VMParameters" value="" />
-      <option name="allowRunningInParallel" value="false" />
-      <option name="alternativeJrePath" />
-      <option name="alternativeJrePathEnabled" value="false" />
-      <option name="classpathModifications">
-        <list />
-      </option>
-      <option name="envs">
-        <map />
-      </option>
-      <option name="passParentEnvs" value="true" />
-      <option name="programParameters" value="" />
-      <option name="projectPathOnTarget" />
-      <option name="selectedOptions">
-        <list />
-      </option>
-      <option name="testKind" value="Class" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="CubeCalculatorTest" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CubeCalculatorTest.CubeCalculator.cube 0 should be 0" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala101" />
       <option name="VMParameters" value="" />
       <option name="allowRunningInParallel" value="false" />
@@ -200,14 +193,14 @@
       </option>
       <option name="testKind" value="Test name" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="CubeCalculatorTest" />
-      <option name="testName" value="CubeCalculator.cube 0 should be 0" />
+      <option name="testClassPath" value="GuessWhoSpec" />
+      <option name="testName" value="guessWho should filter the list of characters and print the correct result when a character is guessed" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FizzBuzzSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala101" />
       <option name="VMParameters" value="" />
       <option name="allowRunningInParallel" value="false" />
@@ -225,9 +218,37 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="testKind" value="Class" />
+      <option name="testKind" value="Test name" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="FizzBuzzSpec" />
+      <option name="testClassPath" value="GuessWhoSpec" />
+      <option name="testName" value="poseQuestion should throw an exception if the guess attribute is invalid" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="scala101" />
+      <option name="VMParameters" value="" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="alternativeJrePath" />
+      <option name="alternativeJrePathEnabled" value="false" />
+      <option name="classpathModifications">
+        <list />
+      </option>
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <option name="testClassPath" value="GuessWhoSpec" />
+      <option name="testName" value="poseQuestion should throw an exception if the guess value is invalid" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -235,25 +256,33 @@
     </configuration>
     <list>
       <item itemvalue="sbt Task.Run the program" />
-      <item itemvalue="ScalaTest.CalculateTaxSpec" />
-      <item itemvalue="ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input" />
-      <item itemvalue="ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0" />
-      <item itemvalue="ScalaTest.FizzBuzzSpec" />
-      <item itemvalue="ScalaTest.CubeCalculatorTest" />
+      <item itemvalue="ScalaTest.GuessWhoSpec.guessCharacter should throw an exception if an invalid name is input" />
+      <item itemvalue="ScalaTest.GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed" />
+      <item itemvalue="ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid" />
+      <item itemvalue="ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid" />
+      <item itemvalue="ScalaTest.GuessWhoSpec" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="ScalaTest.CalculateTaxSpec" />
-        <item itemvalue="ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input" />
-        <item itemvalue="ScalaTest.FizzBuzzSpec" />
-        <item itemvalue="ScalaTest.CubeCalculatorTest" />
-        <item itemvalue="ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0" />
+        <item itemvalue="ScalaTest.GuessWhoSpec" />
+        <item itemvalue="ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid" />
+        <item itemvalue="ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid" />
+        <item itemvalue="ScalaTest.GuessWhoSpec.guessCharacter should throw an exception if an invalid name is input" />
+        <item itemvalue="ScalaTest.GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed" />
       </list>
     </recent_temporary>
   </component>
   <component name="ScalaProjectSettings">
     <option name="migrateConfigurationsNotificationShown" value="true" />
     <option name="scala3DisclaimerShown" value="true" />
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -263,7 +292,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730195316600</updated>
+      <workItem from="1730716315319" duration="5423000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
