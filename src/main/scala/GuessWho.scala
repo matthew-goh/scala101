@@ -38,7 +38,7 @@ case class GuessWho() {
 
   val allCharacters: Seq[GameCharacter] = Seq(Alex, Alfred, Anita, Anne, Bernard, Bill, Charles, Claire, David, Eric)
   val allNames: Seq[String] = allCharacters.map(character => character.name)
-  def resetBoard() : Seq[GameCharacter] = allCharacters // returns list of all characters
+  // def resetBoard: Seq[GameCharacter] = allCharacters // returns list of all characters
 
   // Print names of characters remaining on board
   def printRemainingNames(characterSeq: Seq[GameCharacter]) : Unit = {
@@ -95,7 +95,11 @@ case class GuessWho() {
       }
     }
   }
-
+  // Feedback:
+  // - could have separate methods for validation and filtering
+  // - can use specific types of exceptions if appropriate
+  // - if prompting for user input, loops are ok for validation?
+  // - but if running with a frontend, not so important since can restrict options for user to click
 
   // Guess a character to end the game
   // input selected character, guessed character and Seq of remaining characters

@@ -18,11 +18,11 @@ class GuessWhoSpec extends AnyFlatSpec {
     assert(game.Eric.attributes("eyeColour") === Colour.Brown)
   }
 
-  "guessWho" should "reset the game board with all characters" in {
-    val game = GuessWho()
-    assert(game.resetBoard() ===
-      Seq(game.Alex, game.Alfred, game.Anita, game.Anne, game.Bernard, game.Bill, game.Charles, game.Claire, game.David, game.Eric))
-  }
+//  "guessWho" should "reset the game board with all characters" in {
+//    val game = GuessWho()
+//    assert(game.resetBoard() ===
+//      Seq(game.Alex, game.Alfred, game.Anita, game.Anne, game.Bernard, game.Bill, game.Charles, game.Claire, game.David, game.Eric))
+//  }
 
   "guessWho" should "create a list of all character names" in {
     val game = GuessWho()
@@ -46,6 +46,9 @@ class GuessWhoSpec extends AnyFlatSpec {
     assert(stream.toString.strip === "Anita, Bill, Claire")
   }
 
+  // Feedback: description of test could be based on user's perspective,
+  // e.g. filters to female characters if the player guesses that gender is female when the selected character is female
+  // Then have separate tests for guesses with different attributes
   "poseQuestion" should "filter the list of characters based on the guessed attribute and value" in {
     val game = GuessWho()
     assert(game.poseQuestion(game.Anne, "gender", Gender.Female, game.allCharacters) ===
@@ -58,6 +61,7 @@ class GuessWhoSpec extends AnyFlatSpec {
     assert(filteredChars2 === Seq(game.Eric)) // wearing a grey hat
   }
 
+  // Feedback: could have each case (Gender, Booleans, Colour, Option[Colour]) as a separate test
   "poseQuestion" should "throw an exception if the guess value is invalid" in {
     val game = GuessWho()
 
@@ -128,7 +132,6 @@ class GuessWhoSpec extends AnyFlatSpec {
     //    }
 
     val invalidGuess = intercept[Exception](game.guessCharacter(game.Bill, "Angela", 2, game.allCharacters))
-    //    assert(invalidGuess.isInstanceOf[Exception])
     assert(invalidGuess.getMessage === "Invalid name")
   }
 }

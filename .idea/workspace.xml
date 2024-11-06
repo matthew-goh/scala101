@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040fd19c-99f3-4bd6-96fc-5ce40db4fa0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/GuessWhoExample.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/example/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/example/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/GuessWho.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/GuessWho.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/GuessWhoExample.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/GuessWhoExample.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/GuessWhoSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/GuessWhoSpec.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,44 +61,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GuessWhoExample.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.hello.executor": "Run",
-    "Application.run.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input.executor": "Run",
-    "ScalaTest.CalculateTaxSpec.executor": "Run",
-    "ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0.executor": "Run",
-    "ScalaTest.CubeCalculatorTest.CubeCalculator.cube 3 should be 27.executor": "Run",
-    "ScalaTest.CubeCalculatorTest.executor": "Run",
-    "ScalaTest.FizzBuzzSpec.executor": "Run",
-    "ScalaTest.GuessWhoSpec.executor": "Run",
-    "ScalaTest.GuessWhoSpec.guessCharacter should throw an exception if an invalid name is input.executor": "Run",
-    "ScalaTest.GuessWhoSpec.guessWho should create a list of all character names.executor": "Run",
-    "ScalaTest.GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed.executor": "Run",
-    "ScalaTest.GuessWhoSpec.guessWho should filter the list of characters when a question is posed.executor": "Run",
-    "ScalaTest.GuessWhoSpec.guessWho should print the list of character names correctly.executor": "Run",
-    "ScalaTest.GuessWhoSpec.guessWho should reset the game board with all characters.executor": "Run",
-    "ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid.executor": "Run",
-    "ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid.executor": "Run",
-    "ScalaTest.TwoNumbersSpec.add should add numbers.executor": "Run",
-    "ScalaTest.TwoNumbersSpec.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GuessWhoExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.hello.executor&quot;: &quot;Run&quot;,
+    &quot;Application.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ScalaTest.CalculateTaxSpec.calculateTax should calculate the correct percentage of the input.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.CalculateTaxSpec.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.CubeCalculatorTest.CubeCalculator.cube 0 should be 0.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.CubeCalculatorTest.CubeCalculator.cube 3 should be 27.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.CubeCalculatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.FizzBuzzSpec.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.guessCharacter should throw an exception if an invalid name is input.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.guessWho should create a list of all character names.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.guessWho should filter the list of characters and print the correct result when a character is guessed.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.guessWho should filter the list of characters when a question is posed.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.guessWho should print the list of character names correctly.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.guessWho should reset the game board with all characters.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess attribute is invalid.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.GuessWhoSpec.poseQuestion should throw an exception if the guess value is invalid.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.TwoNumbersSpec.add should add numbers.executor&quot;: &quot;Run&quot;,
+    &quot;ScalaTest.TwoNumbersSpec.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -270,7 +272,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730195316600</updated>
-      <workItem from="1730716315319" duration="7577000" />
+      <workItem from="1730716315319" duration="12090000" />
+      <workItem from="1730797749079" duration="3266000" />
+      <workItem from="1730814792415" duration="1554000" />
+      <workItem from="1730889730178" duration="4285000" />
     </task>
     <servers />
   </component>

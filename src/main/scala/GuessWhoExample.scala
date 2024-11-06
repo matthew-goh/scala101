@@ -1,6 +1,6 @@
 object GuessWhoExample extends App{
   val game = GuessWho()
-  val initBoard = game.resetBoard()
+  val initBoard = game.allCharacters
 
   val selectedCharP1 = game.selectCharacter(game.allCharacters) // P1 must guess this
   val selectedCharP2 = game.selectCharacter(game.allCharacters) // P2 must guess this
