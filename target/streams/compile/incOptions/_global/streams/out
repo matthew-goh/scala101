@@ -1,2 +1,55 @@
-[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/matthew.goh/Documents/Training/scala101/target/scala-3.3.4/classes.bak[0m
-[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/matthew.goh/Documents/Training/scala101/target/scala-3.3.4/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/matthew.goh/Documents/Training/scala101/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/matthew.goh/Documents/Training/scala101/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoExample.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessChecker$OptColourGuess$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GenderEnum.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Gender$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Colour$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessChecker$GenderGuess$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RosyCheeks$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hello$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessChecker$BooleanGuess$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Attribute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hello$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWho$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TwoNumbers.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoExample$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Colour.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EyeColour$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Moustache.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CubeCalculator.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hat$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Glasses$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Beard$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HatColour$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Gender.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessChecker.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameCharacter$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CubeCalculator$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GenderEnum$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EyeColour.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RosyCheeks.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessChecker$ColourGuess$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Beard.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HairColour.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HairColour$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hat.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWho.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessChecker$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HatColour.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	FizzBuzz.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameCharacter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Moustache$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CalculateTax.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Glasses.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoExample$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hello.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/matthew.goh/Documents/Training/scala101/target/scala-2.13/classes.bak[0m
