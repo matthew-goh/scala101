@@ -40,6 +40,6 @@ object GuessWhoExample extends App{
 
   // P1 guesses randomly from the remaining names
   val nameToGuess = game.selectCharacter(charsOnBoardP1).name
-  val charsOnBoardP1Guess4 = game.guessCharacter(selectedCharP1, nameToGuess, 1, charsOnBoardP1)
+  val charsOnBoardP1Guess4 = game.guessCharacter(selectedCharP1, nameToGuess, 1, charsOnBoardP1)._1
   game.printRemainingNames(charsOnBoardP1Guess4)
 }

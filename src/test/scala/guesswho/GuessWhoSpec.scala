@@ -81,7 +81,7 @@ class GuessWhoSpec extends AnyFlatSpec {
     val game = GuessWho()
     val stream = new java.io.ByteArrayOutputStream()
 
-    assert(game.guessCharacter(game.Bill, "biLL", 1, game.allCharacters) === Seq(game.Bill))
+    assert(game.guessCharacter(game.Bill, "biLL", 1, game.allCharacters) === (Seq(game.Bill), true))
     Console.withOut(stream) {
       game.guessCharacter(game.Bill, "biLL", 1, game.allCharacters)
     }
@@ -89,7 +89,7 @@ class GuessWhoSpec extends AnyFlatSpec {
 
     stream.reset()
     assert(game.guessCharacter(game.Bill, "Alfred", 2, game.allCharacters) ===
-      Seq(game.Alex, game.Anita, game.Anne, game.Bernard, game.Bill, game.Charles, game.Claire, game.David, game.Eric))
+      (Seq(game.Alex, game.Anita, game.Anne, game.Bernard, game.Bill, game.Charles, game.Claire, game.David, game.Eric), false))
     Console.withOut(stream) {
       game.guessCharacter(game.Bill, "Alfred", 2, game.allCharacters)
     }
@@ -97,7 +97,7 @@ class GuessWhoSpec extends AnyFlatSpec {
 
     stream.reset()
     assert(game.guessCharacter(game.Bill, "anita", 1, Seq(game.Anita, game.Bill, game.Eric)) ===
-      Seq(game.Bill, game.Eric))
+      (Seq(game.Bill, game.Eric), false))
     Console.withOut(stream) {
       game.guessCharacter(game.Bill, "anita", 1, Seq(game.Anita, game.Bill, game.Eric))
     }

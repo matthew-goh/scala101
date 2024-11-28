@@ -88,6 +88,7 @@ case class GuessWho() {
       }
     }
 
+    guessChecker.printFeedback(selectedChar, guessAttribute, guessValue)
     filterCharacters(selectedChar, guessAttribute, guessValue, remainingChars)
   }
   // Feedback:
@@ -98,10 +99,11 @@ case class GuessWho() {
 
   // Guess a character to end the game
   // input selected character, guessed character and Seq of remaining characters
-  // return Seq of characters after filtering (the guessed character only if correct; remove the guessed character if not)
-  // and print the outcome of the guess
+  // print the outcome of the guess and return a tuple containing
+  // (i) Seq of characters after filtering (the guessed character only if correct; remove the guessed character if not)
+  // (ii) Boolean for whether the guess was correct
   def guessCharacter(selectedChar: GameCharacter, guessedChar: String, guesser: Int,
-                     remainingChars: Seq[GameCharacter]) : Seq[GameCharacter] = {
+                     remainingChars: Seq[GameCharacter]) : (Seq[GameCharacter], Boolean) = {
     val guessedCharFormatted = guessedChar.toLowerCase.capitalize
 
     if(!allNames.contains(guessedCharFormatted)){
@@ -111,15 +113,11 @@ case class GuessWho() {
     guessedCharFormatted match {
       case selectedChar.name => {
         println(s"Player $guesser wins! The character was $guessedCharFormatted.")
-        remainingChars.filter {
-          ch => ch.name == guessedCharFormatted
-        }
+        (remainingChars.filter { ch => ch.name == guessedCharFormatted }, true)
       }
       case _ => {
         println(s"Player $guesser's guess is incorrect. The character is not $guessedCharFormatted.")
-        remainingChars.filter {
-          ch => ch.name != guessedCharFormatted
-        }
+        (remainingChars.filter { ch => ch.name != guessedCharFormatted }, false)
       }
     }
   }
