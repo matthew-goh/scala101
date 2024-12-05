@@ -18,16 +18,10 @@ class GuessWhoSpec extends AnyFlatSpec {
     assert(game.Eric.attributes(EyeColour) === Colour.Brown)
   }
 
-//  "guessWho" should "reset the game board with all characters" in {
-//    val game = GuessWho()
-//    assert(game.resetBoard() ===
-//      Seq(game.Alex, game.Alfred, game.Anita, game.Anne, game.Bernard, game.Bill, game.Charles, game.Claire, game.David, game.Eric))
-//  }
-
   "guessWho" should "create a list of all character names" in {
     val game = GuessWho()
     assert(game.allNames ===
-      Seq("Alex", "Alfred", "Anita", "Anne", "Bernard", "Bill", "Charles", "Claire", "David", "Eric"))
+      Seq("Alex", "Alfred", "Anita", "Anne", "Bernard", "Bill", "Charles", "Claire", "David", "Eric", "George", "Joe", "Maria", "Robert", "Susan"))
   }
 
   "printRemainingNames" should "print the list of character names correctly" in {
@@ -37,7 +31,7 @@ class GuessWhoSpec extends AnyFlatSpec {
       // all printlns in this block will be redirected
       game.printRemainingNames(game.allCharacters)
     }
-    assert(stream.toString.strip === "Alex, Alfred, Anita, Anne, Bernard, Bill, Charles, Claire, David, Eric")
+    assert(stream.toString.strip === "Alex, Alfred, Anita, Anne, Bernard, Bill, Charles, Claire, David, Eric, George, Joe, Maria, Robert, Susan")
 
     stream.reset() // clear ByteArrayOutputStream, otherwise the next output will just be appended
     Console.withOut(stream) {
@@ -51,14 +45,29 @@ class GuessWhoSpec extends AnyFlatSpec {
   // Then have separate tests for guesses with different attributes
   "poseQuestion" should "filter the list of characters based on the guessed attribute and value" in {
     val game = GuessWho()
-    assert(game.poseQuestion(game.Anne, Gender, GenderEnum.Female, game.allCharacters) ===
-      Seq(game.Anita, game.Anne, game.Claire)) // female characters
 
-    val filteredChars1 = game.poseQuestion(game.Eric, HairColour, Colour.Orange, game.allCharacters)
-    assert(filteredChars1 ===
-      Seq(game.Alex, game.Anita, game.Anne, game.Bernard, game.Charles, game.David, game.Eric)) // without orange hair
-    val filteredChars2 = game.poseQuestion(game.Eric, HatColour, Some(Colour.Grey), filteredChars1)
-    assert(filteredChars2 === Seq(game.Eric)) // wearing a grey hat
+    val stream = new java.io.ByteArrayOutputStream()
+    Console.withOut(stream) {
+      assert(game.poseQuestion(game.Anne, Gender, GenderEnum.Female, game.allCharacters) ===
+        Seq(game.Anita, game.Anne, game.Claire, game.Maria, game.Susan)) // female characters
+    }
+    assert(stream.toString.strip === "Yes, the selected character's gender is Female")
+
+    stream.reset()
+    Console.withOut(stream) {
+      val filteredChars1 = game.poseQuestion(game.Eric, HairColour, Colour.Orange, game.allCharacters)
+      assert(filteredChars1 === Seq(game.Alex, game.Anita, game.Anne, game.Bernard, game.Charles, game.David, game.Eric,
+          game.George, game.Joe, game.Maria, game.Robert, game.Susan)) // without orange hair
+    }
+    assert(stream.toString.strip === "No, the selected character's' hair colour is not Orange")
+
+    stream.reset()
+    Console.withOut(stream) {
+      val filteredChars2 = game.poseQuestion(game.Eric, HatColour, Some(Colour.Grey),
+        Seq(game.Alex, game.Anita, game.Anne, game.Bernard, game.Charles, game.David, game.Eric))
+      assert(filteredChars2 === Seq(game.Eric)) // wearing a grey hat
+    }
+    assert(stream.toString.strip === "Yes, the selected character's hat colour is Grey")
   }
 
   "poseQuestion" should "throw an exception if the attribute is invalid for the guess value type" in {
@@ -89,7 +98,8 @@ class GuessWhoSpec extends AnyFlatSpec {
 
     stream.reset()
     assert(game.guessCharacter(game.Bill, "Alfred", 2, game.allCharacters) ===
-      (Seq(game.Alex, game.Anita, game.Anne, game.Bernard, game.Bill, game.Charles, game.Claire, game.David, game.Eric), false))
+      (Seq(game.Alex, game.Anita, game.Anne, game.Bernard, game.Bill, game.Charles, game.Claire, game.David, game.Eric,
+        game.George, game.Joe, game.Maria, game.Robert, game.Susan), false))
     Console.withOut(stream) {
       game.guessCharacter(game.Bill, "Alfred", 2, game.allCharacters)
     }

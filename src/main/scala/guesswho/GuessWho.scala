@@ -38,7 +38,22 @@ case class GuessWho() {
   val Eric: GameCharacter = GameCharacter(name = "Eric", attributes = Map(Gender -> GenderEnum.Male, Glasses -> false, Moustache -> false, Beard -> false,
     RosyCheeks -> false, HairColour -> Colour.Blonde, EyeColour -> Colour.Brown, Hat -> true, HatColour -> Some(Colour.Grey)))
 
-  val allCharacters: Seq[GameCharacter] = Seq(Alex, Alfred, Anita, Anne, Bernard, Bill, Charles, Claire, David, Eric)
+  val George: GameCharacter = GameCharacter(name = "George", attributes = Map(Gender -> GenderEnum.Male, Glasses -> false, Moustache -> false, Beard -> false,
+    RosyCheeks -> false, HairColour -> Colour.White, EyeColour -> Colour.Brown, Hat -> true, HatColour -> Some(Colour.Green)))
+
+  val Joe: GameCharacter = GameCharacter(name = "Joe", attributes = Map(Gender -> GenderEnum.Male, Glasses -> true, Moustache -> false, Beard -> false,
+    RosyCheeks -> false, HairColour -> Colour.Blonde, EyeColour -> Colour.Brown, Hat -> false, HatColour -> None))
+
+  val Maria: GameCharacter = GameCharacter(name = "Maria", attributes = Map(Gender -> GenderEnum.Female, Glasses -> false, Moustache -> false, Beard -> false,
+    RosyCheeks -> false, HairColour -> Colour.Brown, EyeColour -> Colour.Brown, Hat -> true, HatColour -> Some(Colour.Orange)))
+
+  val Robert: GameCharacter = GameCharacter(name = "Robert", attributes = Map(Gender -> GenderEnum.Male, Glasses -> false, Moustache -> false, Beard -> false,
+    RosyCheeks -> true, HairColour -> Colour.Brown, EyeColour -> Colour.Blue, Hat -> false, HatColour -> None))
+
+  val Susan: GameCharacter = GameCharacter(name = "Susan", attributes = Map(Gender -> GenderEnum.Female, Glasses -> false, Moustache -> false, Beard -> false,
+    RosyCheeks -> true, HairColour -> Colour.Blonde, EyeColour -> Colour.Brown, Hat -> false, HatColour -> None))
+
+  val allCharacters: Seq[GameCharacter] = Seq(Alex, Alfred, Anita, Anne, Bernard, Bill, Charles, Claire, David, Eric, George, Joe, Maria, Robert, Susan)
   val allNames: Seq[String] = allCharacters.map(character => character.name)
   // def resetBoard: Seq[GameCharacter] = allCharacters // returns list of all characters
 
@@ -91,11 +106,6 @@ case class GuessWho() {
     guessChecker.printFeedback(selectedChar, guessAttribute, guessValue)
     filterCharacters(selectedChar, guessAttribute, guessValue, remainingChars)
   }
-  // Feedback:
-  // - could have separate methods for validation and filtering
-  // - can use specific types of exceptions if appropriate
-  // - if prompting for user input, loops are ok for validation?
-  // - but if running with a frontend, not so important since can restrict options for user to click
 
   // Guess a character to end the game
   // input selected character, guessed character and Seq of remaining characters
