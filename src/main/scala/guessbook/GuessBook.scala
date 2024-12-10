@@ -4,7 +4,7 @@ import guesswho.GenderEnum
 
 import scala.util.Random
 
-case class GuessBook() {
+object GuessBook {
   // instantiate all books
   val TheHonjinMurders: Book = Book(title = "The Honjin Murders", attributes = Map(CountryOfOrigin -> Country.Japan, Honkaku -> true, AuthorGender -> GenderEnum.Male,
     SchoolOrUniversityStudents -> false, DetectiveType -> Detective.PrivateProfessional, Series -> true, PushkinVertigo -> true, SuspectPoolType -> SuspectPool.RestrictedCommunity))
@@ -72,9 +72,13 @@ case class GuessBook() {
   val TheKubishimeRomanticist: Book = Book(title = "The Kubishime Romanticist", attributes = Map(CountryOfOrigin -> Country.Japan, Honkaku -> true, AuthorGender -> GenderEnum.Male,
     SchoolOrUniversityStudents -> true, DetectiveType -> Detective.Amateur, Series -> true, PushkinVertigo -> false, SuspectPoolType -> SuspectPool.RestrictedCommunity))
 
-  val allBooks: Seq[Book] = Seq(TheHonjinMurders, TheVillageOfEightGraves, TheDecagonHouseMurders, TheMillHouseMurders, TheTokyoZodiacMurders, DeathAmongTheUndead,
-    TheNohMaskMurder, DeathInTheHouseOfRain, Malice, SalvationOfASaint, PrayingMantis, Hyouka, TheSevenDeathsOfEvelynHardcastle, TheParisApartment,
-    TheExaminer, TheWordIsMurder, DanganronpaKirigiri, TokyoExpress, TheDarkMaidens, TheAosawaMurders, LendingTheKeyToTheLockedRoom, TheKubishimeRomanticist)
+  val OneByOne: Book = Book(title = "One By One", attributes = Map(CountryOfOrigin -> Country.UK, Honkaku -> false, AuthorGender -> GenderEnum.Female,
+    SchoolOrUniversityStudents -> false, DetectiveType -> Detective.OrdinaryPerson, Series -> false, PushkinVertigo -> false, SuspectPoolType -> SuspectPool.ClosedCircle))
+
+  val allBooks: Seq[Book] = Seq(TheHonjinMurders, TheVillageOfEightGraves, TheDecagonHouseMurders, TheMillHouseMurders, TheTokyoZodiacMurders,
+    DeathAmongTheUndead, TheNohMaskMurder, DeathInTheHouseOfRain, Malice, SalvationOfASaint, PrayingMantis, Hyouka,
+    TheSevenDeathsOfEvelynHardcastle, TheParisApartment, TheExaminer, TheWordIsMurder, DanganronpaKirigiri, TokyoExpress,
+    TheDarkMaidens, TheAosawaMurders, LendingTheKeyToTheLockedRoom, TheKubishimeRomanticist, OneByOne)
     .sortBy(_.title)
   val allTitles: Seq[String] = allBooks.map(book => book.title)
 

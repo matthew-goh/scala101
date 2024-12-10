@@ -39,9 +39,9 @@ object BookGuessChecker {
 
     def printFeedback(selectedBook: Book, guessAttribute: BookAttribute, guessValue: GenderEnum.Value): Unit = {
       if (selectedBook.attributes(guessAttribute) == guessValue) {
-        println(s"Yes, the author of the selected book is $guessValue")
+        println(s"Yes, the author of the selected book is ${guessValue.toString.toLowerCase}")
       } else {
-        println(s"No, the author of the selected book is not $guessValue")
+        println(s"No, the author of the selected book is not ${guessValue.toString.toLowerCase}")
       }
     }
   }

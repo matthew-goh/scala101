@@ -7,13 +7,20 @@ import scala.util.{Failure, Success, Try}
 
 object GuessBookUserInput {
   def main(args: Array[String]): Unit = {
-    val game = GuessBook()
-    val selectedBooks = List(game.selectBook(game.allBooks), game.selectBook(game.allBooks))
+    val game = GuessBook
+    println("START OF GAME\n")
+
+    // Randomly select a book for each player
+//    val selectedBooks = List(game.selectBook(game.allBooks), game.selectBook(game.allBooks))
+
+    // Each player selects the book that the other one must guess
+    val selectedBookP2: Book = selectBookForOpponent(1)
+    val selectedBookP1: Book = selectBookForOpponent(2)
+    val selectedBooks = List(selectedBookP1, selectedBookP2)
 
     val booksOnBoard = Array(game.allBooks, game.allBooks)
     var gameOver = false
     var guesser = 2
-    println("START OF GAME")
 
     while (!gameOver) {
       guesser = guesser % 2 + 1 // 1 -> 2, 2 -> 1
@@ -67,6 +74,29 @@ object GuessBookUserInput {
     println("END OF GAME")
   }
 
+  def selectBookForOpponent(guesser: Int, numBlankLines: Int = 25): Book = {
+    val game = GuessBook
+    val nonGuesser = guesser % 2 + 1
+    var matchingBook: Option[Book] = None
+
+    println(s"Player $guesser, select a book for Player $nonGuesser to guess.")
+    println(s"Player $nonGuesser, please look away.\n")
+    println("The available books are:")
+    game.printRemainingBooks(game.allBooks, maxBooksPerLine = 5)
+    println()
+
+    while (matchingBook.isEmpty) {
+      println(s"Enter the title of the book for Player $nonGuesser to guess:")
+      val titleInput = StdIn.readLine()
+      matchingBook = game.allBooks.find(book => book.title.toLowerCase == titleInput.toLowerCase)
+      if (matchingBook.isEmpty)
+        println(s"$titleInput is not the title of a book in the game. Please try again.\n")
+    }
+
+    println("Book selected." + "\n" * numBlankLines)
+    matchingBook.getOrElse(throw new Exception("Book should have been selected already"))
+  }
+
   def chooseAttributeOrTitle(): Int = {
     var input: String = ""
     var validInput = false
@@ -84,7 +114,7 @@ object GuessBookUserInput {
   }
 
   def specifyBookTitle(): String = {
-    val game = GuessBook()
+    val game = GuessBook
     var titleInput: String = ""
     var validInput = false
 
@@ -93,8 +123,8 @@ object GuessBookUserInput {
       titleInput = StdIn.readLine()
       val matchingTitle: Option[String] = game.allTitles.find(title => title.toLowerCase == titleInput.toLowerCase)
       matchingTitle match {
-        case Some(_) => {
-          titleInput = matchingTitle.get
+        case Some(title) => {
+          titleInput = title
           validInput = true
         }
         case None => println(s"$titleInput is not the title of a book in the game. Please try again.\n")
@@ -164,7 +194,7 @@ object GuessBookUserInput {
       println(s"Select a value to guess:\n$selectOptionStr")
       input = StdIn.readLine()
       Try(input.toInt) match {
-        case Success(x) if x >= 1 && x <= attributeEnum.values.size => validInput = true
+        case Success(x) if (x >= 1 && x <= attributeEnum.values.size) => validInput = true
         case _ => println("Invalid input. Please try again.\n")
       }
     }
