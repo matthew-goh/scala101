@@ -8,18 +8,8 @@ class GuessBookSpec extends AnyWordSpec {
   private val game = GuessBook
 
   "guessBook" should {
-    "instantiate book attributes correctly" in {
-      assert(TheDecagonHouseMurders.attributes === Map(CountryOfOrigin -> Country.Japan, Honkaku -> true, AuthorGender -> GenderEnum.Male,
-        SchoolOrUniversityStudents -> true, DetectiveType -> Detective.Amateur, Series -> true, PushkinVertigo -> true, SuspectPoolType -> SuspectPool.ClosedCircle))
-      assert(TheHonjinMurders.title === "The Honjin Murders")
-      assert(TheVillageOfEightGraves.attributes(CountryOfOrigin) === Country.Japan)
-      assert(TheTokyoZodiacMurders.attributes(Honkaku) === true)
-      assert(TheNohMaskMurder.attributes(AuthorGender) === GenderEnum.Male)
-      assert(Malice.attributes(SchoolOrUniversityStudents) === false)
-      assert(SalvationOfASaint.attributes(DetectiveType) === Detective.PrivateProfessional)
-      assert(Hyouka.attributes(Series) === true)
-      assert(TheSevenDeathsOfEvelynHardcastle.attributes(PushkinVertigo) === false)
-      assert(DanganronpaKirigiri.attributes(SuspectPoolType) === SuspectPool.ClosedCircle)
+    "instantiate all books correctly from the csv file" in {
+      assert(game.allBooks === BookInfo.allBooks)
     }
 
     "create a sorted list of all book titles" in {
@@ -74,7 +64,7 @@ class GuessBookSpec extends AnyWordSpec {
           Seq(DeathInTheHouseOfRain, OneByOne, PrayingMantis, TheExaminer, TheParisApartment,
             TheSevenDeathsOfEvelynHardcastle, TheWordIsMurder))
       }
-      assert(stream.toString.strip === "Non, the selected book's country of origin is not Japan")
+      assert(stream.toString.strip === "No, the selected book's country of origin is not Japan")
     }
 
     "filter to closed circle mysteries if the player correctly guesses that the type of suspect pool is closed circle" in {

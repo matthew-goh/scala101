@@ -1,16 +1,46 @@
 package guessbook
 
-import guessbook.BookInfo._
+import com.github.tototoshi.csv.CSVReader
+import guesswho.GenderEnum
 
-import scala.util.Random
+import scala.util.{Random, Try}
 
 object GuessBook {
+  // Read book info from csv file
+  val reader: CSVReader = CSVReader.open("src/main/scala/guessbook/gameBooks.csv")
+  val csvData: List[Map[String, String]] = reader.allWithHeaders()
+  // convert each row in the csv into a Book
+  val booksFromCSV: Seq[Book] = csvData.map { row =>
+    val title: String = row.getOrElse("title", throw new Exception("title key not in csv file"))
+    val attributeMap: Map[BookAttribute, Any] = row.collect {
+      // for each key-value pair in the csv row, create the key-value pair in the attribute map
+      case (csvKey, value) if csvKey != "title" => {
+        csvKey match { //
+          case "CountryOfOrigin" => Try(CountryOfOrigin -> Country.withName(value)).toOption
+            .getOrElse(throw new Exception(s"Invalid value for CountryOfOrigin: $value"))
+          case "Honkaku" => Honkaku -> Try(value.toBoolean).toOption
+            .getOrElse(throw new Exception(s"Invalid value for Honkaku Boolean: $value"))
+          case "AuthorGender" => Try(AuthorGender -> GenderEnum.withName(value)).toOption
+            .getOrElse(throw new Exception(s"Invalid value for AuthorGender: $value"))
+          case "SchoolOrUniversityStudents" => Try(SchoolOrUniversityStudents -> value.toBoolean)
+            .getOrElse(throw new Exception(s"Invalid value for SchoolOrUniversityStudents Boolean: $value"))
+          case "DetectiveType" => Try(DetectiveType -> Detective.withName(value)).toOption
+            .getOrElse(throw new Exception(s"Invalid value for DetectiveType: $value"))
+          case "Series" => Series -> Try(value.toBoolean).toOption
+            .getOrElse(throw new Exception(s"Invalid value for Series Boolean: $value"))
+          case "PushkinVertigo" => PushkinVertigo -> Try(value.toBoolean)
+            .getOrElse(throw new Exception(s"Invalid value for PushkinVertigo Boolean: $value"))
+          case "SuspectPoolType" => Try(SuspectPoolType -> SuspectPool.withName(value))
+            .getOrElse(throw new Exception(s"Invalid value for SuspectPoolType: $value"))
+          case _ => throw new Exception("csv file contains unknown attribute key")
+        }
+      }
+    }
+    Book(title, attributeMap)
+  }
+  reader.close()
 
-  val allBooks: Seq[Book] = Seq(TheHonjinMurders, TheVillageOfEightGraves, TheDecagonHouseMurders, TheMillHouseMurders, TheTokyoZodiacMurders,
-    DeathAmongTheUndead, TheNohMaskMurder, DeathInTheHouseOfRain, Malice, SalvationOfASaint, PrayingMantis, Hyouka,
-    TheSevenDeathsOfEvelynHardcastle, TheParisApartment, TheExaminer, TheWordIsMurder, DanganronpaKirigiri, TokyoExpress,
-    TheDarkMaidens, TheAosawaMurders, LendingTheKeyToTheLockedRoom, TheKubishimeRomanticist, OneByOne)
-    .sortBy(_.title)
+  val allBooks: Seq[Book] = booksFromCSV.sortBy(_.title)
   val allTitles: Seq[String] = allBooks.map(book => book.title)
 
   // Print titles of books remaining on board

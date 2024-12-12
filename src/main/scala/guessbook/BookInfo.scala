@@ -72,4 +72,10 @@ object BookInfo {
 
   val OneByOne: Book = Book(title = "One By One", attributes = Map(CountryOfOrigin -> Country.UK, Honkaku -> false, AuthorGender -> GenderEnum.Female,
     SchoolOrUniversityStudents -> false, DetectiveType -> Detective.OrdinaryPerson, Series -> false, PushkinVertigo -> false, SuspectPoolType -> SuspectPool.ClosedCircle))
+
+  val allBooks: Seq[Book] = Seq(TheHonjinMurders, TheVillageOfEightGraves, TheDecagonHouseMurders, TheMillHouseMurders, TheTokyoZodiacMurders,
+    DeathAmongTheUndead, TheNohMaskMurder, DeathInTheHouseOfRain, Malice, SalvationOfASaint, PrayingMantis, Hyouka,
+    TheSevenDeathsOfEvelynHardcastle, TheParisApartment, TheExaminer, TheWordIsMurder, DanganronpaKirigiri, TokyoExpress,
+    TheDarkMaidens, TheAosawaMurders, LendingTheKeyToTheLockedRoom, TheKubishimeRomanticist, OneByOne)
+    .sortBy(_.title)
 }
