@@ -133,7 +133,7 @@ object GuessBook {
   // print the outcome of the guess and return a tuple containing
   // (i) Seq of characters after filtering (the guessed character only if correct; remove the guessed character if not)
   // (ii) Boolean for whether the guess was correct
-  def guessBookTitle(selectedBook: Book, guessedTitle: String, guesser: Int, remainingBooks: Seq[Book]): (Seq[Book], Boolean) = {
+  def guessCharacter(selectedBook: Book, guessedTitle: String, guesser: Int, remainingBooks: Seq[Book]): (Seq[Book], Boolean) = {
     val guessedTitleFormatted =
       allTitles.find(title => title.toLowerCase == guessedTitle.toLowerCase)
         .getOrElse(throw new Exception("Invalid title"))

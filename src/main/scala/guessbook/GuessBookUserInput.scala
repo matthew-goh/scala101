@@ -60,7 +60,7 @@ object GuessBookUserInput {
         }
         case 2 => { // guessing book title
           val guessedTitle: String = specifyBookTitle()
-          val guessResult = game.guessBookTitle(selectedBooks(guesser-1), guessedTitle, guesser, booksOnBoard(guesser-1))
+          val guessResult = game.guessCharacter(selectedBooks(guesser-1), guessedTitle, guesser, booksOnBoard(guesser-1))
           booksOnBoard(guesser-1) = guessResult._1
           gameOver = guessResult._2
           if (!gameOver){
