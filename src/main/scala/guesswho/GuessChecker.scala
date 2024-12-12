@@ -2,7 +2,7 @@ package guesswho
 
 trait GuessChecker[T] {
   def validateGuess(guessAttribute: Attribute, guessValue: T) : Unit
-  def printFeedback(selectedChar: GameCharacter, guessAttribute: Attribute, guessValue: T)
+  def printFeedback(selectedChar: GameCharacter, guessAttribute: Attribute, guessValue: T): Unit
 }
 
 object GuessChecker {

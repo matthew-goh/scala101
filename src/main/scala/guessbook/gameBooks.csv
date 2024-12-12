@@ -1,0 +1,24 @@
+title,CountryOfOrigin,Honkaku,AuthorGender,SchoolOrUniversityStudents,DetectiveType,Series,PushkinVertigo,SuspectPoolType
+The Honjin Murders,Japan,true,Male,false,private professional,true,true,restricted community
+The Village of Eight Graves,Japan,false,Male,false,private professional,true,true,restricted community
+The Decagon House Murders,Japan,true,Male,true,amateur,true,true,closed circle
+The Mill House Murders,Japan,true,Male,false,amateur,true,true,closed circle
+The Tokyo Zodiac Murders,Japan,true,Male,false,amateur,true,true,open investigation
+Death Among the Undead,Japan,true,Male,true,amateur,true,false,closed circle
+The Noh Mask Murder,Japan,true,Male,false,amateur,false,true,restricted community
+Death in the House of Rain,Taiwan,true,Male,true,amateur,false,false,closed circle
+Malice,Japan,false,Male,false,police,true,false,how-catch-em
+Salvation of a Saint,Japan,false,Male,false,private professional,true,false,how-catch-em
+Praying Mantis,India,false,Male,false,private professional,true,true,closed circle
+Hyouka,Japan,true,Male,true,amateur,true,false,open investigation
+The Seven Deaths of Evelyn Hardcastle,UK,false,Male,false,ordinary person / none at all,false,false,closed circle
+The Paris Apartment,UK,false,Female,false,ordinary person / none at all,false,false,restricted community
+The Examiner,UK,false,Female,true,ordinary person / none at all,false,false,restricted community
+The Word is Murder,UK,false,Male,false,private professional,true,false,open investigation
+Danganronpa Kirigiri,Japan,true,Male,true,private professional,true,false,closed circle
+Tokyo Express,Japan,false,Male,false,police,false,false,how-catch-em
+The Dark Maidens,Japan,false,Female,true,ordinary person / none at all,false,false,restricted community
+The Aosawa Murders,Japan,false,Female,false,ordinary person / none at all,false,false,how-catch-em
+Lending the Key to the Locked Room,Japan,true,Male,true,private professional,false,false,open investigation
+The Kubishime Romanticist,Japan,true,Male,true,amateur,true,false,restricted community
+One By One,UK,false,Female,false,ordinary person / none at all,false,false,closed circle
