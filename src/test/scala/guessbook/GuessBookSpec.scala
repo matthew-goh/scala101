@@ -1,5 +1,6 @@
 package guessbook
 
+import guessbook.BookInfo._
 import guesswho.GenderEnum
 import org.scalatest.wordspec.AnyWordSpec
 
@@ -8,17 +9,17 @@ class GuessBookSpec extends AnyWordSpec {
 
   "guessBook" should {
     "instantiate book attributes correctly" in {
-      assert(game.TheDecagonHouseMurders.attributes === Map(CountryOfOrigin -> Country.Japan, Honkaku -> true, AuthorGender -> GenderEnum.Male,
+      assert(TheDecagonHouseMurders.attributes === Map(CountryOfOrigin -> Country.Japan, Honkaku -> true, AuthorGender -> GenderEnum.Male,
         SchoolOrUniversityStudents -> true, DetectiveType -> Detective.Amateur, Series -> true, PushkinVertigo -> true, SuspectPoolType -> SuspectPool.ClosedCircle))
-      assert(game.TheHonjinMurders.title === "The Honjin Murders")
-      assert(game.TheVillageOfEightGraves.attributes(CountryOfOrigin) === Country.Japan)
-      assert(game.TheTokyoZodiacMurders.attributes(Honkaku) === true)
-      assert(game.TheNohMaskMurder.attributes(AuthorGender) === GenderEnum.Male)
-      assert(game.Malice.attributes(SchoolOrUniversityStudents) === false)
-      assert(game.SalvationOfASaint.attributes(DetectiveType) === Detective.PrivateProfessional)
-      assert(game.Hyouka.attributes(Series) === true)
-      assert(game.TheSevenDeathsOfEvelynHardcastle.attributes(PushkinVertigo) === false)
-      assert(game.DanganronpaKirigiri.attributes(SuspectPoolType) === SuspectPool.ClosedCircle)
+      assert(TheHonjinMurders.title === "The Honjin Murders")
+      assert(TheVillageOfEightGraves.attributes(CountryOfOrigin) === Country.Japan)
+      assert(TheTokyoZodiacMurders.attributes(Honkaku) === true)
+      assert(TheNohMaskMurder.attributes(AuthorGender) === GenderEnum.Male)
+      assert(Malice.attributes(SchoolOrUniversityStudents) === false)
+      assert(SalvationOfASaint.attributes(DetectiveType) === Detective.PrivateProfessional)
+      assert(Hyouka.attributes(Series) === true)
+      assert(TheSevenDeathsOfEvelynHardcastle.attributes(PushkinVertigo) === false)
+      assert(DanganronpaKirigiri.attributes(SuspectPoolType) === SuspectPool.ClosedCircle)
     }
 
     "create a sorted list of all book titles" in {
@@ -41,15 +42,15 @@ class GuessBookSpec extends AnyWordSpec {
       }
       assert(stream.toString.strip ===
         "Danganronpa Kirigiri, Death Among the Undead, Death in the House of Rain, Hyouka, Lending the Key to the Locked Room,\n" +
-          "Malice, One By One, Praying Mantis, Salvation of a Saint, The Aosawa Murders,\n" +
-          "The Dark Maidens, The Decagon House Murders, The Examiner, The Honjin Murders, The Kubishime Romanticist,\n" +
-          "The Mill House Murders, The Noh Mask Murder, The Paris Apartment, The Seven Deaths of Evelyn Hardcastle, The Tokyo Zodiac Murders,\n" +
-          "The Village of Eight Graves, The Word is Murder, Tokyo Express"
+        "Malice, One By One, Praying Mantis, Salvation of a Saint, The Aosawa Murders,\n" +
+        "The Dark Maidens, The Decagon House Murders, The Examiner, The Honjin Murders, The Kubishime Romanticist,\n" +
+        "The Mill House Murders, The Noh Mask Murder, The Paris Apartment, The Seven Deaths of Evelyn Hardcastle, The Tokyo Zodiac Murders,\n" +
+        "The Village of Eight Graves, The Word is Murder, Tokyo Express"
       )
 
       stream.reset() // clear ByteArrayOutputStream, otherwise the next output will just be appended
       Console.withOut(stream) {
-        game.printRemainingBooks(Seq(game.SalvationOfASaint, game.TheDarkMaidens, game.TheParisApartment, game.TheWordIsMurder), 3)
+        game.printRemainingBooks(Seq(SalvationOfASaint, TheDarkMaidens, TheParisApartment, TheWordIsMurder), 3)
       }
       assert(stream.toString.strip === "Salvation of a Saint, The Dark Maidens, The Paris Apartment,\n" +
         "The Word is Murder")
@@ -60,8 +61,8 @@ class GuessBookSpec extends AnyWordSpec {
     "filter to books written by a female author if the player correctly guesses that the author's gender is female" in {
       val stream = new java.io.ByteArrayOutputStream()
       Console.withOut(stream) {
-        assert(game.poseQuestion(game.TheParisApartment, AuthorGender, GenderEnum.Female, game.allBooks) ===
-          Seq(game.OneByOne, game.TheAosawaMurders, game.TheDarkMaidens, game.TheExaminer, game.TheParisApartment))
+        assert(game.poseQuestion(TheParisApartment, AuthorGender, GenderEnum.Female, game.allBooks) ===
+          Seq(OneByOne, TheAosawaMurders, TheDarkMaidens, TheExaminer, TheParisApartment))
       }
       assert(stream.toString.strip === "Yes, the author of the selected book is female")
     }
@@ -69,37 +70,38 @@ class GuessBookSpec extends AnyWordSpec {
     "filter to non-Japanese books if the player incorrectly guesses that the book is Japanese" in {
       val stream = new java.io.ByteArrayOutputStream()
       Console.withOut(stream) {
-        assert(game.poseQuestion(game.TheParisApartment, CountryOfOrigin, Country.Japan, game.allBooks) ===
-          Seq(game.DeathInTheHouseOfRain, game.OneByOne, game.PrayingMantis, game.TheExaminer, game.TheParisApartment,
-            game.TheSevenDeathsOfEvelynHardcastle, game.TheWordIsMurder))
+        assert(game.poseQuestion(TheParisApartment, CountryOfOrigin, Country.Japan, game.allBooks) ===
+          Seq(DeathInTheHouseOfRain, OneByOne, PrayingMantis, TheExaminer, TheParisApartment,
+            TheSevenDeathsOfEvelynHardcastle, TheWordIsMurder))
       }
+      assert(stream.toString.strip === "Non, the selected book's country of origin is not Japan")
     }
 
     "filter to closed circle mysteries if the player correctly guesses that the type of suspect pool is closed circle" in {
       val stream = new java.io.ByteArrayOutputStream()
       Console.withOut(stream) {
-        assert(game.poseQuestion(game.TheDecagonHouseMurders, SuspectPoolType, SuspectPool.ClosedCircle,
-          Seq(game.DeathAmongTheUndead, game.DeathInTheHouseOfRain, game.Hyouka, game.TheVillageOfEightGraves)) ===
-          Seq(game.DeathAmongTheUndead, game.DeathInTheHouseOfRain))
+        assert(game.poseQuestion(TheDecagonHouseMurders, SuspectPoolType, SuspectPool.ClosedCircle,
+          Seq(DeathAmongTheUndead, DeathInTheHouseOfRain, Hyouka, TheVillageOfEightGraves)) ===
+          Seq(DeathAmongTheUndead, DeathInTheHouseOfRain))
       }
       assert(stream.toString.strip === "Yes, the selected book's type of suspect pool is closed circle")
     }
 
     "throw an exception if the attribute is invalid for the guess value type" in {
-      val invalidGuess1 = intercept[Exception](game.poseQuestion(game.Malice, CountryOfOrigin, true, game.allBooks))
-      assert(invalidGuess1.getMessage === "Invalid attribute for a Boolean guess value")
+      val invalidGuess1 = intercept[Exception](game.poseQuestion(Malice, CountryOfOrigin, true, game.allBooks))
+      assert(invalidGuess1.getMessage === "Invalid attribute for a Boolean guess value: true")
 
-      val invalidGuess2 = intercept[Exception](game.poseQuestion(game.Malice, DetectiveType, Country.Japan, game.allBooks))
-      assert(invalidGuess2.getMessage === "Invalid attribute for a country guess value")
+      val invalidGuess2 = intercept[Exception](game.poseQuestion(Malice, DetectiveType, Country.Japan, game.allBooks))
+      assert(invalidGuess2.getMessage === "Invalid attribute for a country guess value: Japan")
 
-      val invalidGuess3 = intercept[Exception](game.poseQuestion(game.Malice, Honkaku, GenderEnum.Male, game.allBooks))
-      assert(invalidGuess3.getMessage === "Invalid attribute for a gender guess value")
+      val invalidGuess3 = intercept[Exception](game.poseQuestion(Malice, Honkaku, GenderEnum.Male, game.allBooks))
+      assert(invalidGuess3.getMessage === "Invalid attribute for a gender guess value: Male")
 
-      val invalidGuess4 = intercept[Exception](game.poseQuestion(game.Malice, SuspectPoolType, Detective.Police, game.allBooks))
-      assert(invalidGuess4.getMessage === "Invalid attribute for a detective type guess value")
+      val invalidGuess4 = intercept[Exception](game.poseQuestion(Malice, SuspectPoolType, Detective.Police, game.allBooks))
+      assert(invalidGuess4.getMessage === "Invalid attribute for a detective type guess value: police")
 
-      val invalidGuess5 = intercept[Exception](game.poseQuestion(game.Malice, AuthorGender, SuspectPool.ClosedCircle, game.allBooks))
-      assert(invalidGuess5.getMessage === "Invalid attribute for a suspect pool guess value")
+      val invalidGuess5 = intercept[Exception](game.poseQuestion(Malice, AuthorGender, SuspectPool.ClosedCircle, game.allBooks))
+      assert(invalidGuess5.getMessage === "Invalid attribute for a suspect pool guess value: closed circle")
     }
   }
 
@@ -108,22 +110,22 @@ class GuessBookSpec extends AnyWordSpec {
       val stream = new java.io.ByteArrayOutputStream()
 
       Console.withOut(stream) {
-        assert(game.guessBookTitle(game.TheDecagonHouseMurders, "the decagon house murders", 1, game.allBooks)
-          === (Seq(game.TheDecagonHouseMurders), true))
+        assert(game.guessBookTitle(TheDecagonHouseMurders, "the decagon house murders", 1, game.allBooks)
+          === (Seq(TheDecagonHouseMurders), true))
       }
       assert(stream.toString.strip === "Player 1 wins! The book was The Decagon House Murders.")
 
       stream.reset()
       Console.withOut(stream) {
-        assert(game.guessBookTitle(game.TheDecagonHouseMurders, "Death Among the Undead", 2,
-          Seq(game.DeathAmongTheUndead, game.DeathInTheHouseOfRain, game.TheDecagonHouseMurders, game.OneByOne)) ===
-          (Seq(game.DeathInTheHouseOfRain, game.TheDecagonHouseMurders, game.OneByOne), false))
+        assert(game.guessBookTitle(TheDecagonHouseMurders, "Death Among the Undead", 2,
+          Seq(DeathAmongTheUndead, DeathInTheHouseOfRain, TheDecagonHouseMurders, OneByOne)) ===
+          (Seq(DeathInTheHouseOfRain, TheDecagonHouseMurders, OneByOne), false))
       }
       assert(stream.toString.strip === "Player 2's guess is incorrect. The book is not Death Among the Undead.")
     }
 
     "throw an exception if an invalid title is input" in {
-      val invalidGuess = intercept[Exception](game.guessBookTitle(game.TheDecagonHouseMurders, "The Labyrinth House Murders", 2, game.allBooks))
+      val invalidGuess = intercept[Exception](game.guessBookTitle(TheDecagonHouseMurders, "The Labyrinth House Murders", 2, game.allBooks))
       assert(invalidGuess.getMessage === "Invalid title")
     }
   }

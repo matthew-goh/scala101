@@ -1,5 +1,6 @@
 package guessbook
 
+import guessbook.BookInfo._
 import guesswho.GenderEnum
 import org.scalatest.matchers.should._
 import org.scalatest.wordspec.AnyWordSpec
@@ -8,9 +9,33 @@ import java.io.{ByteArrayInputStream, ByteArrayOutputStream}
 
 class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
 
-  "selectBookForOpponent()" should {
-    val game = GuessBook
+  "chooseGameMode()" should {
+    "return an Int 2" in {
+      val outputStream = new ByteArrayOutputStream()
+      val userInput = "2"
+      val inputStream = new ByteArrayInputStream(userInput.getBytes)
 
+      Console.withIn(inputStream) {
+        Console.withOut(outputStream) {
+          assert(GuessBookUserInput.chooseGameMode() == 2)
+        }
+      }
+    }
+
+    "prompt for input again if invalid input is received" in {
+      val outputStream = new ByteArrayOutputStream()
+      val userInput = "aaa\n1"
+      val inputStream = new ByteArrayInputStream(userInput.getBytes)
+      Console.withIn(inputStream) {
+        Console.withOut(outputStream) {
+          assert(GuessBookUserInput.chooseAttributeOrTitle() == 1)
+        }
+      }
+      outputStream.toString should include ("Invalid input. Please try again.")
+    }
+  }
+
+  "selectBookForOpponent()" should {
     "print the correct player numbers and return the selected book" in {
       val outputStream = new ByteArrayOutputStream()
       val userInput = "the decagon house murders"
@@ -18,7 +43,7 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
 
       Console.withIn(inputStream) {
         Console.withOut(outputStream) {
-          assert(GuessBookUserInput.selectBookForOpponent(guesser = 1) == game.TheDecagonHouseMurders)
+          assert(GuessBookUserInput.selectBookForOpponent(guesser = 1) == TheDecagonHouseMurders)
         }
       }
 
@@ -34,7 +59,7 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
       val inputStream = new ByteArrayInputStream(userInput.getBytes)
       Console.withIn(inputStream) {
         Console.withOut(outputStream) {
-          assert(GuessBookUserInput.selectBookForOpponent(guesser = 2) == game.TheMillHouseMurders)
+          assert(GuessBookUserInput.selectBookForOpponent(guesser = 2) == TheMillHouseMurders)
         }
       }
       outputStream.toString should include ("NotABook is not the title of a book in the game. Please try again.")
@@ -68,8 +93,6 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
   }
 
   "specifyBookTitle()" should {
-    val game = GuessBook
-
     "return the title of a book" in {
       val outputStream = new ByteArrayOutputStream()
       val userInput = "the decagon house murders"
@@ -77,7 +100,7 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
 
       Console.withIn(inputStream) {
         Console.withOut(outputStream) {
-          assert(GuessBookUserInput.specifyBookTitle() == game.TheDecagonHouseMurders.title)
+          assert(GuessBookUserInput.specifyBookTitle() == TheDecagonHouseMurders.title)
         }
       }
     }
@@ -88,7 +111,7 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
       val inputStream = new ByteArrayInputStream(userInput.getBytes)
       Console.withIn(inputStream) {
         Console.withOut(outputStream) {
-          assert(GuessBookUserInput.specifyBookTitle() == game.TheMillHouseMurders.title)
+          assert(GuessBookUserInput.specifyBookTitle() == TheMillHouseMurders.title)
         }
       }
       outputStream.toString should include ("NotABook is not the title of a book in the game. Please try again.")
