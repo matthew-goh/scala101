@@ -25,13 +25,14 @@ object GuessBookUserInput {
         List(selectedBookP1, selectedBookP2)
       }
     }
-
     val booksOnBoard = Array(game.allBooks, game.allBooks)
-    var gameOver = false
-    var guesser = 2
 
-    while (!gameOver) {
-      guesser = guesser % 2 + 1 // 1 -> 2, 2 -> 1
+    // play the game
+    playerTurns(selectedBooks, booksOnBoard)
+
+    // recursive function that calls itself until a player guesses correctly
+    @tailrec
+    def playerTurns(selectedBooks: List[Book], booksOnBoard: Array[Seq[Book]], guesser: Int = 1) : Unit = {
       val guesserIndex = guesser - 1
       println(s"\nPlayer $guesser's turn!")
       println(s"Books remaining on P$guesser's board:")
@@ -66,21 +67,23 @@ object GuessBookUserInput {
 
           println(s"Books remaining on P$guesser's board:")
           game.printRemainingBooks(booksOnBoard(guesserIndex))
+          // end of turn
+          playerTurns(selectedBooks, booksOnBoard, guesser = guesser % 2 + 1)
         }
         case 2 => { // guessing book title
           val guessedTitle: String = specifyBookTitle()
           val guessResult: (Seq[Book], Boolean) = game.guessBookTitle(selectedBooks(guesserIndex), guessedTitle, guesser, booksOnBoard(guesserIndex))
           booksOnBoard(guesserIndex) = guessResult._1
-          gameOver = guessResult._2
-          if (!gameOver){
+          if (guessResult._2)  // player guessed correctly
+            println("END OF GAME")
+          else {
             println(s"Books remaining on P$guesser's board:")
             game.printRemainingBooks(booksOnBoard(guesserIndex))
+            playerTurns(selectedBooks, booksOnBoard, guesser = guesser % 2 + 1)
           }
         }
       }
     }
-
-    println("END OF GAME")
   }
 
   def selectBookForOpponent(guesser: Int, numBlankLines: Int = 25): Book = {
