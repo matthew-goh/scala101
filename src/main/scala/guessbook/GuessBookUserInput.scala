@@ -7,8 +7,9 @@ import scala.io.StdIn
 import scala.util.{Failure, Success, Try}
 
 object GuessBookUserInput {
+  private val game = GuessBook
+
   def main(args: Array[String]): Unit = {
-    val game = GuessBook
     println("START OF GAME\n")
 
     println("First, select a game mode.")
@@ -87,9 +88,7 @@ object GuessBookUserInput {
   }
 
   def selectBookForOpponent(guesser: Int, numBlankLines: Int = 25): Book = {
-    val game = GuessBook
     val nonGuesser = guesser % 2 + 1
-
     println(s"Player $guesser, select a book for Player $nonGuesser to guess.")
     println(s"Player $nonGuesser, please look away.\n")
     println("The available books are:")
@@ -147,9 +146,7 @@ object GuessBookUserInput {
   }
 
   def specifyBookTitle(): String = {
-    val game = GuessBook
     println("Which do you think is the selected book?")
-
     val titleInput = StdIn.readLine()
     val matchingTitle: Option[String] = game.allTitles.find(title => title.toLowerCase == titleInput.toLowerCase)
     matchingTitle match {
