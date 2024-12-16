@@ -1,5 +1,7 @@
 package guesswho
 
-object GenderEnum extends Enumeration{
+import guessbook.BookAttributeEnum
+
+object GenderEnum extends Enumeration with BookAttributeEnum {
   val Male, Female = Value
 }
