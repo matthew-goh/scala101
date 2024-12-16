@@ -3,7 +3,7 @@ package guessbook
 import com.github.tototoshi.csv.CSVReader
 import guesswho.GenderEnum
 
-import scala.util.{Random, Try}
+import scala.util.{Failure, Random, Success, Try}
 
 object GuessBook {
 
@@ -15,32 +15,26 @@ object GuessBook {
 
     // convert each list item (row in the csv) into a Book
     csvData.map { row =>
-      val title: String = row.getOrElse("title", throw new Exception("title key not in csv file"))
-      val attributeMap: Map[BookAttribute, Any] = row.collect {
-        // for each key-value pair in the csv row, create the key-value pair in the attribute map
-        case (csvKey, value) if csvKey != "title" => {
-          csvKey match { //
-            case "CountryOfOrigin" => Try(CountryOfOrigin -> Country.withName(value)).toOption
-              .getOrElse(throw new Exception(s"Invalid value for CountryOfOrigin: $value"))
-            case "Honkaku" => Honkaku -> Try(value.toBoolean).toOption
-              .getOrElse(throw new Exception(s"Invalid value for Honkaku Boolean: $value"))
-            case "AuthorGender" => Try(AuthorGender -> GenderEnum.withName(value)).toOption
-              .getOrElse(throw new Exception(s"Invalid value for AuthorGender: $value"))
-            case "SchoolOrUniversityStudents" => Try(SchoolOrUniversityStudents -> value.toBoolean)
-              .getOrElse(throw new Exception(s"Invalid value for SchoolOrUniversityStudents Boolean: $value"))
-            case "DetectiveType" => Try(DetectiveType -> Detective.withName(value)).toOption
-              .getOrElse(throw new Exception(s"Invalid value for DetectiveType: $value"))
-            case "Series" => Series -> Try(value.toBoolean).toOption
-              .getOrElse(throw new Exception(s"Invalid value for Series Boolean: $value"))
-            case "PushkinVertigo" => PushkinVertigo -> Try(value.toBoolean)
-              .getOrElse(throw new Exception(s"Invalid value for PushkinVertigo Boolean: $value"))
-            case "SuspectPoolType" => Try(SuspectPoolType -> SuspectPool.withName(value))
-              .getOrElse(throw new Exception(s"Invalid value for SuspectPoolType: $value"))
-            case _ => throw new Exception("csv file contains unknown attribute key")
-          }
+      val bookFromRow: Try[Book] = for {
+        title <- Try(row("title")) match {
+          case Success("") => Failure(new Exception("Blank title found"))
+          case t @ _ => t
         }
+        countryValue <- Try(Country.withName(row("CountryOfOrigin")))
+        honkakuValue <- Try(row("Honkaku").toBoolean)
+        genderValue <- Try(GenderEnum.withName(row("AuthorGender")))
+        studentsValue <- Try(row("SchoolOrUniversityStudents").toBoolean)
+        detectiveValue <- Try(Detective.withName(row("DetectiveType")))
+        seriesValue <- Try(row("Series").toBoolean)
+        pushkinValue <- Try(row("PushkinVertigo").toBoolean)
+        suspectPoolValue <- Try(SuspectPool.withName(row("SuspectPoolType")))
+      } yield Book(title, Map(CountryOfOrigin -> countryValue, Honkaku -> honkakuValue, AuthorGender -> genderValue, SchoolOrUniversityStudents -> studentsValue,
+        DetectiveType -> detectiveValue, Series -> seriesValue, PushkinVertigo -> pushkinValue, SuspectPoolType -> suspectPoolValue))
+
+      bookFromRow match {
+        case Success(book) => book
+        case Failure(e) => throw new Exception(s"Error reading book info from csv file: ${e.getMessage}")
       }
-      Book(title, attributeMap)
     }
   }
 
@@ -73,7 +67,7 @@ object GuessBook {
   def poseQuestion[T](selectedBook: Book, guessAttribute: BookAttribute, guessValue: T,
                    remainingBooks: Seq[Book])(implicit guessChecker: BookGuessChecker[T]) : Seq[Book] = {
     // check that guessAttribute is valid given the guessValue type
-    guessChecker.validateGuess(guessAttribute, guessValue)
+    guessChecker.validateGuessAttribute(guessAttribute)
 
     // if selected book has the guessed attribute's value, keep books with the guessed value
     def filterBooks(selectedBook: Book, guessAttribute: BookAttribute, guessValue: T,

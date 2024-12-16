@@ -3,7 +3,7 @@ package guessbook
 import guesswho.GenderEnum
 
 trait BookGuessChecker[T] {
-  def validateGuess(guessAttribute: BookAttribute, guessValue: T) : Unit
+  def validateGuessAttribute(guessAttribute: BookAttribute) : Unit
 
   // default implementation, overridden for certain guessValue types
   def printFeedback(selectedBook: Book, guessAttribute: BookAttribute, guessValue: T): Unit = {
@@ -17,10 +17,10 @@ trait BookGuessChecker[T] {
 
 object BookGuessChecker {
   implicit object BooleanGuessChecker extends BookGuessChecker[Boolean] {
-    def validateGuess(guessAttribute: BookAttribute, guessValue: Boolean) : Unit = {
+    def validateGuessAttribute(guessAttribute: BookAttribute) : Unit = {
       guessAttribute match {
         case Honkaku | SchoolOrUniversityStudents | Series | PushkinVertigo => ()
-        case _ => throw new Exception(s"Invalid attribute for a Boolean guess value: $guessValue")
+        case _ => throw new Exception(s"Invalid attribute for a Boolean guess value")
       }
     }
 
@@ -38,10 +38,10 @@ object BookGuessChecker {
   }
 
   implicit object GenderGuessChecker extends BookGuessChecker[GenderEnum.Value] {
-    def validateGuess(guessAttribute: BookAttribute, guessValue: GenderEnum.Value) : Unit = {
+    def validateGuessAttribute(guessAttribute: BookAttribute) : Unit = {
       guessAttribute match {
         case AuthorGender => ()
-        case _ => throw new Exception(s"Invalid attribute for a gender guess value: $guessValue")
+        case _ => throw new Exception(s"Invalid attribute for a gender guess value")
       }
     }
 
@@ -55,28 +55,28 @@ object BookGuessChecker {
   }
 
   implicit object CountryGuessChecker extends BookGuessChecker[Country.Value] {
-    def validateGuess(guessAttribute: BookAttribute, guessValue: Country.Value) : Unit = {
+    def validateGuessAttribute(guessAttribute: BookAttribute) : Unit = {
       guessAttribute match {
         case CountryOfOrigin => ()
-        case _ => throw new Exception(s"Invalid attribute for a country guess value: $guessValue")
+        case _ => throw new Exception(s"Invalid attribute for a country guess value")
       }
     }
   }
 
   implicit object DetectiveGuessChecker extends BookGuessChecker[Detective.Value] {
-    def validateGuess(guessAttribute: BookAttribute, guessValue: Detective.Value) : Unit = {
+    def validateGuessAttribute(guessAttribute: BookAttribute) : Unit = {
       guessAttribute match {
         case DetectiveType => ()
-        case _ => throw new Exception(s"Invalid attribute for a detective type guess value: $guessValue")
+        case _ => throw new Exception(s"Invalid attribute for a detective type guess value")
       }
     }
   }
 
   implicit object SuspectPoolGuessChecker extends BookGuessChecker[SuspectPool.Value] {
-    def validateGuess(guessAttribute: BookAttribute, guessValue: SuspectPool.Value) : Unit = {
+    def validateGuessAttribute(guessAttribute: BookAttribute) : Unit = {
       guessAttribute match {
         case SuspectPoolType => ()
-        case _ => throw new Exception(s"Invalid attribute for a suspect pool guess value: $guessValue")
+        case _ => throw new Exception(s"Invalid attribute for a suspect pool guess value")
       }
     }
   }

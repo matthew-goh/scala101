@@ -12,6 +12,11 @@ class GuessBookSpec extends AnyWordSpec {
       assert(game.allBooks === BookInfo.allBooks)
     }
 
+    "throw an exception if books could not be instantiated when reading from the csv file" in {
+      val badCsv = intercept[Exception](game.getBooksFromCSV("src/main/scala/guessbook/gameBooksBad.csv"))
+      assert(badCsv.getMessage === "Error reading book info from csv file: No value found for 'JPN'")
+    }
+
     "create a sorted list of all book titles" in {
       assert(game.allTitles ===
         Seq("Danganronpa Kirigiri", "Death Among the Undead", "Death in the House of Rain", "Hyouka", "Lending the Key to the Locked Room",
@@ -79,19 +84,19 @@ class GuessBookSpec extends AnyWordSpec {
 
     "throw an exception if the attribute is invalid for the guess value type" in {
       val invalidGuess1 = intercept[Exception](game.poseQuestion(Malice, CountryOfOrigin, true, game.allBooks))
-      assert(invalidGuess1.getMessage === "Invalid attribute for a Boolean guess value: true")
+      assert(invalidGuess1.getMessage === "Invalid attribute for a Boolean guess value")
 
       val invalidGuess2 = intercept[Exception](game.poseQuestion(Malice, DetectiveType, Country.Japan, game.allBooks))
-      assert(invalidGuess2.getMessage === "Invalid attribute for a country guess value: Japan")
+      assert(invalidGuess2.getMessage === "Invalid attribute for a country guess value")
 
       val invalidGuess3 = intercept[Exception](game.poseQuestion(Malice, Honkaku, GenderEnum.Male, game.allBooks))
-      assert(invalidGuess3.getMessage === "Invalid attribute for a gender guess value: Male")
+      assert(invalidGuess3.getMessage === "Invalid attribute for a gender guess value")
 
       val invalidGuess4 = intercept[Exception](game.poseQuestion(Malice, SuspectPoolType, Detective.Police, game.allBooks))
-      assert(invalidGuess4.getMessage === "Invalid attribute for a detective type guess value: police")
+      assert(invalidGuess4.getMessage === "Invalid attribute for a detective type guess value")
 
       val invalidGuess5 = intercept[Exception](game.poseQuestion(Malice, AuthorGender, SuspectPool.ClosedCircle, game.allBooks))
-      assert(invalidGuess5.getMessage === "Invalid attribute for a suspect pool guess value: closed circle")
+      assert(invalidGuess5.getMessage === "Invalid attribute for a suspect pool guess value")
     }
   }
 
