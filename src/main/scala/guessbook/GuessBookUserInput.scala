@@ -7,7 +7,8 @@ import scala.io.StdIn
 import scala.util.{Failure, Success, Try}
 
 object GuessBookUserInput {
-  private val game = GuessBook
+  private val fileReader = new CSVFileReader
+  private val game = new GuessBook(fileReader)
 
   def main(args: Array[String]): Unit = {
     println("START OF GAME\n")
@@ -145,6 +146,7 @@ object GuessBookUserInput {
     }
   }
 
+  @tailrec
   def specifyBookTitle(): String = {
     println("Which do you think is the selected book?")
     val titleInput = StdIn.readLine()

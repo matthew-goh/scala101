@@ -5,7 +5,8 @@ import guesswho.GenderEnum
 import org.scalatest.wordspec.AnyWordSpec
 
 class GuessBookSpec extends AnyWordSpec {
-  private val game = GuessBook
+  private val fileReader = new CSVFileReader
+  private val game = new GuessBook(fileReader)
 
   "guessBook" should {
     "instantiate all books correctly from the csv file" in {
@@ -13,7 +14,7 @@ class GuessBookSpec extends AnyWordSpec {
     }
 
     "throw an exception if books could not be instantiated when reading from the csv file" in {
-      val badCsv = intercept[Exception](game.getBooksFromCSV("src/main/scala/guessbook/gameBooksBad.csv"))
+      val badCsv = intercept[Exception](fileReader.getBooksFromCSV("src/main/scala/guessbook/gameBooksBad.csv"))
       assert(badCsv.getMessage === "Error reading book info from csv file: No value found for 'JPN'")
     }
 
@@ -29,26 +30,32 @@ class GuessBookSpec extends AnyWordSpec {
   }
 
   "printRemainingBooks()" should {
-    "print the list of book titles, with the correct number of titles on each line" in {
+    "print the list of book titles, limited by the number of characters on each line" in {
       val stream = new java.io.ByteArrayOutputStream()
       Console.withOut(stream) {
         // all printlns in this block will be redirected
-        game.printRemainingBooks(game.allBooks, 5)
+        game.printRemainingBooks(game.allBooks, 120)
       }
       assert(stream.toString.strip ===
         "Danganronpa Kirigiri, Death Among the Undead, Death in the House of Rain, Hyouka, Lending the Key to the Locked Room,\n" +
-        "Malice, One By One, Praying Mantis, Salvation of a Saint, The Aosawa Murders,\n" +
-        "The Dark Maidens, The Decagon House Murders, The Examiner, The Honjin Murders, The Kubishime Romanticist,\n" +
-        "The Mill House Murders, The Noh Mask Murder, The Paris Apartment, The Seven Deaths of Evelyn Hardcastle, The Tokyo Zodiac Murders,\n" +
+        "Malice, One By One, Praying Mantis, Salvation of a Saint, The Aosawa Murders, The Dark Maidens,\n" +
+        "The Decagon House Murders, The Examiner, The Honjin Murders, The Kubishime Romanticist, The Mill House Murders,\n" +
+        "The Noh Mask Murder, The Paris Apartment, The Seven Deaths of Evelyn Hardcastle, The Tokyo Zodiac Murders,\n" +
         "The Village of Eight Graves, The Word is Murder, Tokyo Express"
       )
 
       stream.reset() // clear ByteArrayOutputStream, otherwise the next output will just be appended
       Console.withOut(stream) {
-        game.printRemainingBooks(Seq(SalvationOfASaint, TheDarkMaidens, TheParisApartment, TheWordIsMurder), 3)
+        game.printRemainingBooks(Seq(SalvationOfASaint, TheDarkMaidens, TheParisApartment, TheWordIsMurder), 60)
       }
       assert(stream.toString.strip === "Salvation of a Saint, The Dark Maidens, The Paris Apartment,\n" +
         "The Word is Murder")
+
+      stream.reset()
+      Console.withOut(stream) {
+        game.printRemainingBooks(Seq())
+      }
+      assert(stream.toString.strip === "Something is wrong! No books left on board.")
     }
   }
 

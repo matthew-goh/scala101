@@ -1,61 +1,46 @@
 package guessbook
 
-import com.github.tototoshi.csv.CSVReader
-import guesswho.GenderEnum
+import scala.annotation.tailrec
+import scala.util.Random
 
-import scala.util.{Failure, Random, Success, Try}
-
-object GuessBook {
-
-  // Read book info from csv file
-  def getBooksFromCSV(path: String): Seq[Book] = {
-    val reader: CSVReader = CSVReader.open(path)
-    val csvData: List[Map[String, String]] = reader.allWithHeaders()
-    reader.close()
-
-    // convert each list item (row in the csv) into a Book
-    csvData.map { row =>
-      val bookFromRow: Try[Book] = for {
-        title <- Try(row("title")) match {
-          case Success("") => Failure(new Exception("Blank title found"))
-          case t @ _ => t
-        }
-        countryValue <- Try(Country.withName(row("CountryOfOrigin")))
-        honkakuValue <- Try(row("Honkaku").toBoolean)
-        genderValue <- Try(GenderEnum.withName(row("AuthorGender")))
-        studentsValue <- Try(row("SchoolOrUniversityStudents").toBoolean)
-        detectiveValue <- Try(Detective.withName(row("DetectiveType")))
-        seriesValue <- Try(row("Series").toBoolean)
-        pushkinValue <- Try(row("PushkinVertigo").toBoolean)
-        suspectPoolValue <- Try(SuspectPool.withName(row("SuspectPoolType")))
-      } yield Book(title, Map(CountryOfOrigin -> countryValue, Honkaku -> honkakuValue, AuthorGender -> genderValue, SchoolOrUniversityStudents -> studentsValue,
-        DetectiveType -> detectiveValue, Series -> seriesValue, PushkinVertigo -> pushkinValue, SuspectPoolType -> suspectPoolValue))
-
-      bookFromRow match {
-        case Success(book) => book
-        case Failure(e) => throw new Exception(s"Error reading book info from csv file: ${e.getMessage}")
-      }
-    }
-  }
-
-  val allBooks: Seq[Book] = getBooksFromCSV("src/main/scala/guessbook/gameBooks.csv").sortBy(_.title)
+class GuessBook(fileReader: CSVFileReader) {
+  val allBooks: Seq[Book] = fileReader.getBooksFromCSV("src/main/scala/guessbook/gameBooks.csv").sortBy(_.title)
   val allTitles: Seq[String] = allBooks.map(book => book.title)
 
   // Print titles of books remaining on board
-  def printRemainingBooks(bookSeq: Seq[Book], maxBooksPerLine: Int = 5): Unit = {
-    val titleSeq = bookSeq.map(book => book.title)
+  def printRemainingBooks(bookSeq: Seq[Book], maxCharsPerLine: Int = 120): Unit = {
+    val titles = bookSeq.map(book => book.title)
 
-    // concatenate 5 titles to be printed on each line
-    val titleGroups = titleSeq.grouped(maxBooksPerLine).toList
-    def concatenatedLines(groupedStrings: Seq[Seq[String]]): String = {
-      groupedStrings.length match {
-        case 0 => ""
-        case 1 => groupedStrings.head.mkString(", ")
-        case _ => groupedStrings.head.mkString(", ") + ",\n" + concatenatedLines(groupedStrings.tail)
+    @tailrec
+    def formLines(remainingTitles: Seq[String], accStr: String, currLineLength: Int): String = {
+      remainingTitles match {
+        case Nil => accStr
+        case head :: tail => {
+          val newLineLength = currLineLength + head.length + 2
+          if (newLineLength <= maxCharsPerLine) formLines(tail, accStr + ", " + head, newLineLength)
+          else formLines(tail, accStr + ",\n" + head, head.length)
+        }
       }
     }
-    println(concatenatedLines(titleGroups))
+
+    if (titles.isEmpty) println("Something is wrong! No books left on board.")
+    else println(formLines(titles.tail, titles.head, titles.head.length))
   }
+
+//    def printRemainingBooksOld(bookSeq: Seq[Book], maxBooksPerLine: Int = 5): Unit = {
+//      val titleSeq = bookSeq.map(book => book.title)
+//      val titleGroups = titleSeq.grouped(maxBooksPerLine).toList
+//
+//      // concatenate titles to be printed on each line
+//      @tailrec
+//      def concatenateLines(groupedStrings: Seq[Seq[String]], accStr: String = ""): String = {
+//        groupedStrings match {
+//          case Nil => accStr
+//          case head :: tail => concatenateLines(tail, accStr + ",\n" + head.mkString(", "))
+//        }
+//      }
+//      println(concatenateLines(titleGroups))
+//    }
 
   // Randomly select a book from the input list
   def selectBook(bookSeq: Seq[Book]): Book =
