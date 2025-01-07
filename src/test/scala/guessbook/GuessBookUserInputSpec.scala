@@ -38,7 +38,7 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
   "selectBookForOpponent()" should {
     "print the correct player numbers and return the selected book" in {
       val outputStream = new ByteArrayOutputStream()
-      val userInput = "the decagon house murders"
+      val userInput = " the decagon house murders  " // whitespace to be stripped
       val inputStream = new ByteArrayInputStream(userInput.getBytes)
 
       Console.withIn(inputStream) {
@@ -95,7 +95,7 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
   "specifyBookTitle()" should {
     "return the title of a book" in {
       val outputStream = new ByteArrayOutputStream()
-      val userInput = "the decagon house murders"
+      val userInput = "THE decagon house murders"
       val inputStream = new ByteArrayInputStream(userInput.getBytes)
 
       Console.withIn(inputStream) {
@@ -147,7 +147,7 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
   "specifyBooleanValue()" should {
     "return a Boolean" in {
       val outputStream = new ByteArrayOutputStream()
-      val userInput = "True"
+      val userInput = " True" // whitespace to be stripped
       val inputStream = new ByteArrayInputStream(userInput.getBytes)
 
       Console.withIn(inputStream) {
@@ -218,7 +218,7 @@ class GuessBookUserInputSpec extends AnyWordSpec with Matchers {
 
     "print the options correctly and return a SuspectPool enum value" in {
       val outputStream = new ByteArrayOutputStream()
-      val userInput = "3"
+      val userInput = "3 " // whitespace to be stripped
       val inputStream = new ByteArrayInputStream(userInput.getBytes)
 
       Console.withIn(inputStream) {

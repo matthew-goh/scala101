@@ -99,7 +99,7 @@ object GuessBookUserInput {
     @tailrec
     def getBookInGame(nonGuesser: Int): Book = {
       println(s"Enter the title of the book for Player $nonGuesser to guess:")
-      val titleInput = StdIn.readLine()
+      val titleInput = StdIn.readLine().strip()
       val matchingBook = game.allBooks.find(book => book.title.toLowerCase == titleInput.toLowerCase)
       matchingBook match {
         case Some(book) => {
@@ -121,7 +121,7 @@ object GuessBookUserInput {
     println("Enter [1] for each player's selected book to be drawn randomly\n" +
       "Enter [2] for each player to choose the book for their opponent to guess")
 
-    val input = StdIn.readLine()
+    val input = StdIn.readLine().strip()
     Try(input.toInt) match {
       case Success(x) if (x == 1 || x == 2) => x
       case _ => {
@@ -136,7 +136,7 @@ object GuessBookUserInput {
     println("Enter [1] to guess an attribute value\n" +
       "Enter [2] to guess the title")
 
-    val input = StdIn.readLine()
+    val input = StdIn.readLine().strip()
     Try(input.toInt) match {
       case Success(x) if (x == 1 || x == 2) => x
       case _ => {
@@ -149,7 +149,7 @@ object GuessBookUserInput {
   @tailrec
   def specifyBookTitle(): String = {
     println("Which do you think is the selected book?")
-    val titleInput = StdIn.readLine()
+    val titleInput = StdIn.readLine().strip()
     val matchingTitle: Option[String] = game.allTitles.find(title => title.toLowerCase == titleInput.toLowerCase)
     matchingTitle match {
       case Some(title) => title
@@ -172,7 +172,7 @@ object GuessBookUserInput {
       s"Enter [7] for: whether the book is ${PushkinVertigo.attributeText}\n" +
       s"Enter [8] for: ${SuspectPoolType.attributeText}")
 
-    val input = StdIn.readLine()
+    val input = StdIn.readLine().strip()
     Try(input.toInt) match {
       case Success(num) if (num >= 1 && num <= 8) => {
         num match {
@@ -196,7 +196,7 @@ object GuessBookUserInput {
   @tailrec
   def specifyBooleanValue(): Boolean = {
     println("Enter the guess value ('true' or 'false'):")
-    val guessInput = StdIn.readLine()
+    val guessInput = StdIn.readLine().strip()
     Try(guessInput.toLowerCase.toBoolean) match {
       case Success(b) => b
       case Failure(_) => {
@@ -214,7 +214,7 @@ object GuessBookUserInput {
     }.mkString("\n")
 
     println(s"Select a value to guess:\n$selectOptionStr")
-    val input = StdIn.readLine()
+    val input = StdIn.readLine().strip()
     Try(input.toInt) match {
       case Success(x) if (x >= 1 && x <= attributeEnum.values.size) =>
         attributeEnum.values.toList(input.toInt - 1)

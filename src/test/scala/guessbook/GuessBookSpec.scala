@@ -13,6 +13,11 @@ class GuessBookSpec extends AnyWordSpec {
       assert(game.allBooks === BookInfo.allBooks)
     }
 
+    "throw an exception if the csv file could not be read from the given path" in {
+      val badCsvPath = intercept[Exception](fileReader.getBooksFromCSV("src/main/scala/guessbook/abc.csv"))
+      assert(badCsvPath.getMessage === "Could not read csv file from given path: src/main/scala/guessbook/abc.csv (No such file or directory)")
+    }
+
     "throw an exception if books could not be instantiated when reading from the csv file" in {
       val badCsv = intercept[Exception](fileReader.getBooksFromCSV("src/main/scala/guessbook/gameBooksBad.csv"))
       assert(badCsv.getMessage === "Error reading book info from csv file: No value found for 'JPN'")
