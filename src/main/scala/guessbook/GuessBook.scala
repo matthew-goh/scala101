@@ -53,22 +53,16 @@ class GuessBook(fileReader: CSVFileReader) {
                    remainingBooks: Seq[Book])(implicit guessChecker: BookGuessChecker[T]) : Seq[Book] = {
     // check that guessAttribute is valid given the guessValue type
     guessChecker.validateGuessAttribute(guessAttribute)
+    guessChecker.printFeedback(selectedBook, guessAttribute, guessValue)
 
     // if selected book has the guessed attribute's value, keep books with the guessed value
     def filterBooks(selectedBook: Book, guessAttribute: BookAttribute, guessValue: T,
                     remainingBooks: Seq[Book]): Seq[Book] = {
-      if (selectedBook.attributes(guessAttribute) == guessValue){
-        remainingBooks.filter {
-          book => book.attributes(guessAttribute) == guessValue
-        }
-      } else { // keep books without the guessed value
-        remainingBooks.filter {
-          book => book.attributes(guessAttribute) != guessValue
-        }
-      }
+      if (selectedBook.attributes(guessAttribute) == guessValue)
+        remainingBooks.filter(book => book.attributes(guessAttribute) == guessValue)
+      else // keep books without the guessed value
+        remainingBooks.filter(book => book.attributes(guessAttribute) != guessValue)
     }
-
-    guessChecker.printFeedback(selectedBook, guessAttribute, guessValue)
     filterBooks(selectedBook, guessAttribute, guessValue, remainingBooks)
   }
 
