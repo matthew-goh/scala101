@@ -1,3 +1,3 @@
 package guesswho
 
-case class GameCharacter(val name: String, val attributes: Map[Attribute, Any])
+case class GameCharacter(name: String, attributes: Map[Attribute, Any])
